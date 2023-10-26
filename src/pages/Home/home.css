@@ -1,0 +1,115 @@
+.home-container{
+    /* width: 100%; */
+    margin: 120px 2vw 2vw 2vw;
+    /* background-color: aqua; */
+}
+
+.home-container .home-content-container {
+    background-image: url("../../assets/home-img.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 110vh;
+  background-color: grey; 
+   background-blend-mode: multiply;
+
+  color: #fff;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-container .home-content-container .products-link{
+    width: fit-content;
+    margin-top: 1vw;
+    padding: 1vw 2vw;
+    background-color:var(--primary-color); ;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: capitalize;
+    align-items: center;
+}
+.home-container .home-content-container p{
+  font-size: 2vw;
+  font-weight: 600;
+}
+.home-container .home-content-container .products-link i{
+  align-items: center;
+  font-size: 2vw;
+}
+
+.home-container .category-text-container{
+    margin-top: 3vw;
+    font-size: 2vw;
+    text-align: center;
+    margin: 5vw;
+}
+
+.home-container .category-details-conatiner{
+  display: flex;
+  gap: 1rem;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-top: 3vw;
+ 
+}
+.home-container .category-details-conatiner .category-container:hover{
+  transition: all .40s;
+  transform: scale(1.05);
+}
+
+.home-container .category-container{
+  width: 13rem;
+  height: 13rem;
+  align-self: center;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+@media (max-width:500px) {
+  
+        .home-container{
+    /* width: 100%; */
+    margin: 200px 6vw 6vw 6vw;
+    /* background-color: aqua; */
+        }
+        .home-container .home-content-container {
+          height: 70vh;
+          padding: 2rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          justify-items: center;
+        }
+        .home-container .home-content-container p{
+          font-weight: 500;
+          font-size: 5vw;
+          margin-bottom: 2vw;
+        }
+        .home-container .home-content-container h2{
+          font-weight: 750;
+          font-size: 12vw;
+          line-height: 10vw;
+          width: 100%;
+        }
+        .home-container .home-content-container .products-link{
+          margin-top: 3vw;
+          padding: 3vw 5vw;
+          font-weight: 700;
+          font-size: 5vw;
+        }
+        .home-container .home-content-container .products-link i{
+          font-size: 4vw;
+        }
+
+
+}

@@ -1,0 +1,124 @@
+.footer{
+    width: 100%;
+    height: 60vh;
+    background-color: #2D2019;
+    color: #fff;
+    padding: 3vw;
+    margin-top: 2vw;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer .footer-about{
+    width: 60%;
+}
+
+.footer .footer-about h3{
+    font-size: 3vw;
+    padding-bottom: 2vw;
+    font-weight: 800;
+}
+
+.footer .footer-about p{
+    font-size: 1.5vw;
+    padding-block: 1vw;
+    font-weight: 600;
+    
+}
+
+.footer-connectus{
+    text-align: center;
+}
+.footer .footer-connectus .quik-links{
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+.footer .footer-connectus h3{
+    margin-bottom: 1.5vw;
+    font-size: 2.5vw;
+}
+.footer .footer-quick-links h3{
+    margin-bottom: 1.5vw;
+    font-size: 2.5vw;
+}
+
+@media (max-width:500px) {
+    .footer{
+         display: flex;
+        flex-direction: column; 
+        display: grid;
+       margin: 0;
+    }
+    .footer .footer-about{
+        width: 100%;
+        
+    }
+    .footer .footer-about h3{
+        font-size: 6vw;
+        padding-bottom: 2vw;
+        font-weight: 800;
+    }
+    
+    .footer .footer-about p{
+        font-size: 3vw;
+        padding-block: 1vw;
+        font-weight: 600;  
+    } 
+
+    .footer-connectus {
+        text-align:start;
+    }
+    .footer-connectus .quik-links{
+        flex-direction: row;
+    }
+    .footer .footer-connectus h3{
+    
+        font-size: 5vw;
+    }
+    .footer .footer-quick-links h3{
+        
+        font-size: 5vw;
+    }
+
+
+    /* @media (max-width: 500px) {
+        .footer {
+            display: grid;
+            grid-template-rows: auto auto; /* Two rows: auto for content, auto for contacts/links 
+            grid-template-columns: 1fr; /* Single column for both contacts and links 
+        }
+    
+        .footer .footer-about {
+            grid-row: 1; /* Place in the first row 
+            grid-column: 1; /* Span the entire first column 
+            width: 100%; /* Full width 
+        }
+        .footer .footer-about h3{
+            font-size: 6vw;
+            padding-bottom: 2vw;
+            font-weight: 800;
+        }
+        .footer .footer-about p{
+        font-size: 3vw;
+        padding-block: 1vw;
+        font-weight: 600;  
+    } 
+    
+        .footer .footer-connectus, .footer .quik-links {
+            grid-row: 2; /* Place in the second row 
+            grid-column: 1; /* Span the entire first column 
+        }
+    
+        .footer .footer-connectus {
+            
+        }
+    
+        .footer .quik-links {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    } */
+}
