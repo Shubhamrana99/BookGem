@@ -17,6 +17,8 @@ import {
 // Call make Server
 makeServer();
 
+export {CategoryContext};
+
 ReactDOM.render( 
   <React.StrictMode >
     <BrowserRouter >

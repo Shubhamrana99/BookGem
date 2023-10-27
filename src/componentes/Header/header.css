@@ -8,6 +8,8 @@
     align-items: center;
     padding: 2vw;
     position: fixed;
+    top: 0;
+    z-index: 10;
 }
 
 .header-container .header-logo{
