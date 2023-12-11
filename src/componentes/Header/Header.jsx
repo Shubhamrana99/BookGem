@@ -1,20 +1,28 @@
+import { useNavigate } from "react-router-dom";
 import "./header.css";
 
 export const Header=()=>{
+    
+    const navigate =useNavigate();
+
     return(
         <nav className="header-container">
-        <h1 className="header-logo">BookGem</h1>
+        <h1 className="header-logo" onClick={()=>navigate("./")}>BookGem</h1>
 
         <label>
         <input className="header-inputsearch"  type="text" value={""} onChange={""} placeholder="Search books here..." />
         </label>
 
         <div className="nav-menu">
+
+        <div className="icon"><i class='bx bxs-book' onClick={()=>navigate("/productlistingpage")}></i></div>
+
+       <div  className="icon"><i class='bx bxs-heart' onClick={()=>navigate("/wishlist")}></i></div>
        
-       <i class='bx bxs-book'></i>
-       <i class='bx bxs-heart'></i>
-        <i class='bx bxs-cart'></i>
-        <i  class='bx bxs-user'></i>
+       <div  className="icon"><i class='bx bxs-cart'  onClick={()=>navigate("/cart")}></i></div>
+
+       <div  className="icon"><i  class='bx bxs-user' onClick={()=>navigate("/user")}></i></div>
+        
        
         </div>
         </nav>

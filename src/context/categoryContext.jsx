@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer } from "react"
 
-import { getCategoryService } from "../services/categories-services/getCategoryService";
+import { getCategoryService } from "../services/categories_services/getCategoryService";
 import { categoriesReducer, initialCategoriesReducer } from "../reducer/categoriesReducer";
 
 
