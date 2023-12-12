@@ -8,7 +8,14 @@ export const AuthContext=createContext();
 export const AuthProvider=({children})=>{
     const [userDetails,setUserDetails]=useState({ email: "", password: "" });
     const [authState,authDispatch]=useReducer(authReducer,intialAuth);
-    
+    const [signUpDetails,setSignUpDetails]=useState({
+        firstName:"",
+        lastName:"",
+        email:"",
+        password:"",
+        confirmPassword:""
+      })
+
     const navigate=useNavigate();
 
     const userLogIn=async()=>{
@@ -33,6 +40,14 @@ export const AuthProvider=({children})=>{
     }
 
     return(
-        <AuthContext.Provider value={{userDetails,setUserDetails,authState,userLogIn,handleSignOut}}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{
+            userDetails,
+            setUserDetails,
+            authState,
+            userLogIn,
+            handleSignOut,
+            signUpDetails,
+            setSignUpDetails
+        }}>{children}</AuthContext.Provider>
     )
 }

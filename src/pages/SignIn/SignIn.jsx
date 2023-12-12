@@ -10,7 +10,6 @@ export const SignIn=()=>{
     const {userDetails,setUserDetails , authState,userLogIn}=useContext(AuthContext)
 
 
-
     const handleUserDetails=(e)=>{
         // [email,password]=e.target;
         // setUserDetails((pre)=>{...pre,[name]: e.target.value})
