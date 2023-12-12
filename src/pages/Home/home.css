@@ -89,7 +89,7 @@
 }
 .home-container .category-details-conatiner .category-container small{
   font-weight: 480;
-  font-size: 1.5vw;
+  font-size: 1rem;
 }
 
 @media (max-width:500px) {

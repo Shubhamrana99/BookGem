@@ -1,16 +1,34 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 
 import "./signup.css";
 import { AuthContext } from "../../context/authContext"
 import { User } from "../User/User"
 import { Link } from "react-router-dom";
-import sign from "jwt-encode";
 
 export const SignUp=()=>{
 
-  const {authState ,signUpDetails,setSignUpDetails}=useContext(AuthContext);
+  const {authState ,
+    signUpDetails,
+    setSignUpDetails,
+    handleShowAndHidePassword,
+    isPassVisible,
+  userSignUpDetails}=useContext(AuthContext);
 
- 
+    const handleSignUpSubmit=(e)=>{
+      e.preventDefault();
+      if(signUpDetails.firstName.trim() ==="" || 
+      signUpDetails.lastName.trim() ==="" ||
+      signUpDetails.email.trim() ==="" ||
+      signUpDetails.password.trim() ==="" ||
+      signUpDetails.confirmPassword.trim() ==="" 
+      ){
+        console.log(`please filled all details`);
+      }else if(signUpDetails.password !== signUpDetails.confirmPassword){
+        console.error(`Both password are mismatched, please fill correctly`);
+      }else{
+        userSignUpDetails(e)
+      }
+    }
 
   const handleUserinput=(e)=>{
     setSignUpDetails({...signUpDetails,[e.target.name]:e.target.value})
@@ -24,13 +42,16 @@ export const SignUp=()=>{
                {authState.isLoggedIn===true?(
                 <User/>
                ):(
-                <div>
+                <div >
                      <h1 className="signup-heading">Register</h1>
-                     <p className="signup-tagline">Ignite your experience! Sign up now for exclusive app access</p>
-                     
+                       <p className="signup-tagline">Ignite your experience! Sign up now for exclusive app access</p>
+                   
+                  <div className="all-input-fields">
                      <label>
                      <p>Firstname</p>
-                     <input onChange={handleUserinput}
+                     <input 
+                      className="input-fields"
+                      onChange={handleUserinput}
                       name="firstName"
                       value={signUpDetails.firstName}
                       placeholder="Shubham"
@@ -39,7 +60,9 @@ export const SignUp=()=>{
                      
                      <label>
                      <p>LastName</p>
-                     <input onChange={handleUserinput}
+                     <input 
+                      className="input-fields"
+                      onChange={handleUserinput}
                      name="lastName"
                      value={signUpDetails.lastName}
                      placeholder="Rana"
@@ -48,7 +71,9 @@ export const SignUp=()=>{
                      
                      <label>
                      <p>Email</p>
-                     <input onChange={handleUserinput} 
+                     <input 
+                      className="input-fields"
+                      onChange={handleUserinput} 
                      name="email"
                      value={signUpDetails.email}
                      placeholder="shubhamrana19599@gmail.com"
@@ -57,24 +82,35 @@ export const SignUp=()=>{
                      
                      <label>
                      <p>Password</p>
-                     <input onChange={handleUserinput}
+                     <input 
+                      className="input-fields"
+                      onChange={handleUserinput}
+                     type={isPassVisible?"text":"password"}
                      name="password"
                      value={signUpDetails.password}
                      placeholder="************"
                      />
+                     <p 
+                     className="passwordvisibletoggle"
+                     onClick={handleShowAndHidePassword}
+                     type="button"
+                     >{isPassVisible?"Hide":"Show"}</p>
                      </label>
 
                      <label>
                      <p>Confirm Password</p>
-                     <input onChange={handleUserinput}
+                     <input 
+                      className="input-fields"
+                      onChange={handleUserinput}
                      name="confirmPassword"
                      value={signUpDetails.confirmPassword}
                      placeholder="************"
                      />
                      </label>
+                  </div>
 
-                   <div className="signupform-submitbtn">
-                       <button>Submit</button>
+                   <div>
+                       <button className="signupform-submitbtn" onClick={handleSignUpSubmit}>Submit</button>
                    </div>
 
                    <div className="signin-link">

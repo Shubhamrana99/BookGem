@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom"
 import "./signin.css"
-import { useContext, useState } from "react"
+import { useContext } from "react"
 
 import { AuthContext } from "../../context/authContext"
 import { User } from "../User/User"
 
 export const SignIn=()=>{
 
-    const {userDetails,setUserDetails , authState,userLogIn}=useContext(AuthContext)
+    const {userDetails,
+        setUserDetails , 
+        authState,
+        userLogIn, 
+        handleShowAndHidePassword,
+        isPassVisible}=useContext(AuthContext)
 
 
     const handleUserDetails=(e)=>{
@@ -18,11 +23,6 @@ export const SignIn=()=>{
 
     console.log(userDetails);
 
-    const [isPassVisible,setIsPassVisible]=useState(false);
-
-    const handleShowAndHidePassword=()=>{
-        setIsPassVisible(!isPassVisible)
-    }
 
     const handleLoggedInClick=(e)=>{
         e.preventDefault();
@@ -40,22 +40,37 @@ export const SignIn=()=>{
             <div className="singnin-container">
             
             <h2 className="signin-heading" >Sign in</h2>
-
             <label>
             <p>Enter Email</p>
-            <input className="email-container" type="text" name="email"  placeholder="shubhamrana19599@gmail.com" value={userDetails.email}   onChange={handleUserDetails}/>
+            <input className="email-container" 
+            type="text" 
+            name="email"  
+            placeholder="shubhamrana19599@gmail.com" 
+            value={userDetails.email}   
+            onChange={handleUserDetails}
+            />
             </label>
     
             <div className="password-container">
             <p>Password</p>
-                <input type={isPassVisible?"text":"password"} className="password-container" name="password" placeholder="************"  value={userDetails.password} onChange={handleUserDetails}/>
+                <input type={isPassVisible?"text":"password"} 
+                className="password-container"
+                name="password" placeholder="************"  
+                value={userDetails.password} 
+                onChange={handleUserDetails}
+                />
     
-                <span className="passwordtoggle" onClick={handleShowAndHidePassword} type="button">
+                <span className="passwordtoggle"
+                 onClick={handleShowAndHidePassword}
+                  type="button">
                 {isPassVisible?"Hide":"Show"}
                 </span>
             </div>
     
-            <button className="signin-button" onClick={handleLoggedInClick}>Log In</button>
+            <button 
+            className="signin-button" 
+            onClick={handleLoggedInClick}
+            >Log In</button>
     
             <p className="create-new-account" >
             <Link to="/signup">Create New Account</Link>

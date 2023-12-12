@@ -39,6 +39,29 @@ export const AuthProvider=({children})=>{
         
     }
 
+    const userSignUpDetails=async()=>{
+       try {
+        const {
+            data: { createdUser, encodedToken },
+          } = await axios.post("/api/auth/signup", signUpDetails);
+        // const{
+        //     data: {createdUser,encodedToken}
+        // }=await axios.post("/api/auth/signup",signUpDetails);
+        authDispatch({type:"HANDLE_SIGNIN",payload:true});
+        localStorage.setItem(JSON.stringify("userSignUpDetails",createdUser))
+        localStorage.setItem(JSON.stringify("encodedTokenforSignUp",encodedToken))
+        navigate("/productlistingpage")
+       } catch (error) {
+        console.error("Error in userSignUpDetails:", error);
+       }
+    }
+
+    const [isPassVisible,setIsPassVisible]=useState(false);
+
+    const handleShowAndHidePassword=()=>{
+        setIsPassVisible(!isPassVisible)
+    }
+
     return(
         <AuthContext.Provider value={{
             userDetails,
@@ -47,7 +70,11 @@ export const AuthProvider=({children})=>{
             userLogIn,
             handleSignOut,
             signUpDetails,
-            setSignUpDetails
+            setSignUpDetails,
+            handleShowAndHidePassword,
+            isPassVisible,
+            userSignUpDetails
+
         }}>{children}</AuthContext.Provider>
     )
 }
