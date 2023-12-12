@@ -18,12 +18,15 @@ export const User=()=>{
           <SignIn/>
           ):(
             <div className="userDetails-container">
-            <h2>Name : {user.firstName} {user.lastName}</h2>
-            <h3>Email : {user.email}</h3>
+            <h3 className="profile-headings">Profile Details</h3>
+           <div className="profile-details"> 
+           <p>Name : {user.firstName} {user.lastName}</p>
+           <p>Email : {user.email}</p>
+           </div>
 
-            <button onClick={handleSignOut}>Sign Out</button>
+            <button className="signoutbtn" onClick={handleSignOut}>Sign Out</button>
 
-            <button>Add Address</button>
+            <button className="addressbtn">Add Address</button>
 
             </div>
           )}

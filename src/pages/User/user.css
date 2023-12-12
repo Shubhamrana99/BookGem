@@ -3,3 +3,49 @@
     margin: 120px 2vw 2vw 2vw;
     /* background-color: aqua; */
 }
+.userDetails-container {
+    width: 60vw;
+    max-width: 500px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+    /* background-color: #B99A7E; */
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-headings {
+    text-align:center;
+    font-size: 2rem;
+    margin: 1rem 0;
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+.profile-details{
+    font-weight: 450;
+    margin: 0.5rem 0;
+    font-size: 2rem;
+}
+
+
+
+.signoutbtn, .addressbtn {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.signoutbtn:hover, .addressbtn:hover {
+    color: var(--primary-color);
+    background-color: #fff;
+    border: solid 2px var(--primary-color);
+    box-shadow: none; 
+}

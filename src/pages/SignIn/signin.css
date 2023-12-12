@@ -1,4 +1,58 @@
-.singnin-container{
-   
+.signin-page-container {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.singnin-container {
+    width: 60vw;
+    max-width: 450px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    background-color: #FBF9F7;
+}
+
+.signin-heading,
+.create-new-account {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.singnin-container, .email-container, .password-container {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.3rem;
+    position: relative;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1); */
+}
+
+.passwordtoggle {
+    cursor: pointer;
+    position: absolute;
+    right: 23px;
+    top: 63%;
+    transform: translateY(-50%);
+    background: none;
+    padding: 4px 8px;
+}
+
+.signin-button {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.signin-button:hover {
+    color: var(--primary-color);
+    background-color: #fff;
+    border: solid 2px var(--primary-color);
+    box-shadow: none; 
 }

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import "./signin.css"
 import { useContext, useState } from "react"
+
 import { AuthContext } from "../../context/authContext"
 import { User } from "../User/User"
 
@@ -34,31 +35,38 @@ export const SignIn=()=>{
 
     return(
         <>
-
+        <div className="signin-page-container">
         {authState.isLoggedIn===true ?(<User/>):( 
 
-        <div className="singnin-container">
-        
-        <p className="signin-heading" >Sign in</p>
+            <div className="singnin-container">
+            
+            <h2 className="signin-heading" >Sign in</h2>
 
-        <input className="email-container" type="text" name="email"  placeholder="Enter email" value={userDetails.email}   onChange={handleUserDetails}/>
-
-        <div className="password-container">
-            <input type={isPassVisible?"text":"password"} name="password" placeholder="Enter password"  value={userDetails.password} onChange={handleUserDetails}/>
-
-            <span className="passwordtoggle" onClick={handleShowAndHidePassword} type="button">
-            {isPassVisible?"Hide":"Show"}
-            </span>
+            <label>
+            <p>Enter Email</p>
+            <input className="email-container" type="text" name="email"  placeholder="shubhamrana19599@gmail.com" value={userDetails.email}   onChange={handleUserDetails}/>
+            </label>
+    
+            <div className="password-container">
+            <p>Password</p>
+                <input type={isPassVisible?"text":"password"} className="password-container" name="password" placeholder="************"  value={userDetails.password} onChange={handleUserDetails}/>
+    
+                <span className="passwordtoggle" onClick={handleShowAndHidePassword} type="button">
+                {isPassVisible?"Hide":"Show"}
+                </span>
+            </div>
+    
+            <button className="signin-button" onClick={handleLoggedInClick}>Log In</button>
+    
+            <p className="create-new-account" >
+            <Link to="/signup">Create New Account</Link>
+            </p>
+    
+            </div>)  
+        }
         </div>
 
-        <button className="signin-button" onClick={handleLoggedInClick}>Log In</button>
-
-        <p>
-        <Link to="/signup" >Create New Account</Link>
-        </p>
-
-        </div>)
-    }
+      
        
         </>
     )
