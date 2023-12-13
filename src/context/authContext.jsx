@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
     password: "",
     confirmPassword: "",
   });
-
+  const [isPassVisible, setIsPassVisible] = useState(false);
   const navigate = useNavigate();
 
   const userLogIn = async () => {
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
   const handleSignOut = () => {
     authDispatch({ type: "HANDLE_SIGNOUT", payload: false });
     localStorage.removeItem("encodedToken");
-    localStorage.removeItem("", "");
+    localStorage.removeItem("userSignUpDetails", userSignUpDetails);
     navigate("/");
   };
 
@@ -60,7 +60,25 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const [isPassVisible, setIsPassVisible] = useState(false);
+  const guestSignIn = async (email, password) => {
+    try {
+      const { status, data } = await axios.post("/api/auth/login", {
+        email,
+        password,
+      });
+      if (status === 200) {
+        authDispatch({ type: "HANDLE_SIGNIN", payload: true });
+        localStorage.setItem(
+          JSON.stringify("guestSignInDetails", data.foundUser)
+        );
+        localStorage.setItem(
+          JSON.stringify("guestEncodedToken", data.encodedToken)
+        );
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleShowAndHidePassword = () => {
     setIsPassVisible(!isPassVisible);
@@ -79,6 +97,7 @@ export const AuthProvider = ({ children }) => {
         handleShowAndHidePassword,
         isPassVisible,
         userSignUpDetails,
+        guestSignIn,
       }}
     >
       {children}

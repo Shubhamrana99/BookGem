@@ -13,6 +13,7 @@ export const SignIn = () => {
     userLogIn,
     handleShowAndHidePassword,
     isPassVisible,
+    guestSignIn,
   } = useContext(AuthContext);
 
   const handleUserDetails = (e) => {
@@ -73,6 +74,15 @@ export const SignIn = () => {
 
             <button className="signin-button" onClick={handleLoggedInClick}>
               Log In
+            </button>
+
+            <button
+              className="guest-signin-btn"
+              onClick={() =>
+                guestSignIn("shubhamrana19599@gmail.com", "Shubhamrana")
+              }
+            >
+              LogIn As Guest
             </button>
 
             <p className="create-new-account">
