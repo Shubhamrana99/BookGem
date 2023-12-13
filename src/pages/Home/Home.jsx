@@ -3,39 +3,43 @@ import "./home.css";
 import { useContext } from "react";
 import { CategoryContext } from "../../context/categoryContext";
 
-export const Home=()=>{
+export const Home = () => {
+  const {
+    categoriesState: { categoriesList },
+  } = useContext(CategoryContext);
 
-    const {categoriesState:{categoriesList}}=useContext(CategoryContext)
+  // console.log(categoriesList);
 
-    // console.log(categoriesList);
-
-    return(
-        <div className="home-container">
-        <div className="home-content-container" >
+  return (
+    <div className="home-container">
+      <div className="home-content-container">
         <p>Welcome to BookGem,</p>
-       <h2>Where Every Page is a Treasure</h2>
-       <Link className="products-link">Explore now <i class='bx bxs-right-arrow'></i></Link>
-        </div>
+        <h2>Where Every Page is a Treasure</h2>
+        <Link className="products-link">
+          Explore now <i class="bx bxs-right-arrow"></i>
+        </Link>
+      </div>
 
-        <div className="category-text-container" >
-            <h2>Book Categories</h2>
-            <p>BookGem offers a variety of book categories. Discover your favorite now!</p>
-        </div>
+      <div className="category-text-container">
+        <h2>Book Categories</h2>
+        <p>
+          BookGem offers a variety of book categories. Discover your favorite
+          now!
+        </p>
+      </div>
 
-        
-        <div className="category-details-conatiner">
+      <div className="category-details-conatiner">
         {categoriesList ? (
-            categoriesList.map(({ id, categoryName, description }) => (
-                <div className="category-container" key={id}>
-                    <p>{categoryName}</p>
-                    <small>{description}</small>
-                </div>
-            ))
+          categoriesList.map(({ id, categoryName, description }) => (
+            <div className="category-container" key={id}>
+              <p>{categoryName}</p>
+              <small>{description}</small>
+            </div>
+          ))
         ) : (
-            <p>Loading categories...</p>
+          <p>Loading categories...</p>
         )}
+      </div>
     </div>
-        
-        </div>
-    )
-}
+  );
+};

@@ -1,34 +1,42 @@
-import { createContext, useEffect, useReducer } from "react"
+import { createContext, useEffect, useReducer } from "react";
 import { productServices } from "../services/product_Services/productService";
 import { initialProduct, productReducer } from "../reducer/productReducer";
 
-export const ProductContext=createContext();
+export const ProductContext = createContext();
 
-export const ProductProvider=({children})=>{
-    const [productState,productDispatch]=useReducer(productReducer,initialProduct)
+export const ProductProvider = ({ children }) => {
+  const [productState, productDispatch] = useReducer(
+    productReducer,
+    initialProduct
+  );
 
-    const getBookProduct=async()=>{
-        try {
-            const {status,data:{products}}=await productServices();
-            if(status===200){
-                productDispatch({type:"DISPLAY_BOOKLIST", payload:products})
-            }
-        } catch (error) {
-            console.error(error);
-        }
+  const getBookProduct = async () => {
+    try {
+      const {
+        status,
+        data: { products },
+      } = await productServices();
+      if (status === 200) {
+        productDispatch({ type: "DISPLAY_BOOKLIST", payload: products });
+      }
+    } catch (error) {
+      console.error(error);
     }
+  };
 
-    useEffect(()=>{
-        getBookProduct();
-    },[])
+  useEffect(() => {
+    getBookProduct();
+  }, []);
 
-    // const {bookList}=productState;
+  // const {bookList}=productState;
 
-    const getDiscount=(originalPrice,price)=>{
-        return Math.trunc(((originalPrice - price) / originalPrice) * 100)
-    }
+  const getDiscount = (originalPrice, price) => {
+    return Math.trunc(((originalPrice - price) / originalPrice) * 100);
+  };
 
-    return(
-        <ProductContext.Provider value={{productState,getDiscount}} >{children}</ProductContext.Provider>
-    )
-}
+  return (
+    <ProductContext.Provider value={{ productState, getDiscount }}>
+      {children}
+    </ProductContext.Provider>
+  );
+};
