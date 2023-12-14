@@ -23,7 +23,7 @@ export const User = () => {
               </p>
               <p>Email : {user.email}</p>
             </div>
-
+            
             <button className="signoutbtn" onClick={handleSignOut}>
               Sign Out
             </button>
