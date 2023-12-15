@@ -86,7 +86,7 @@ export const AddressForm = () => {
               onChange={handleAddressInput}
             />
           </label>
-          onChange={handleAddressInput}
+
           <br />
         </form>
 

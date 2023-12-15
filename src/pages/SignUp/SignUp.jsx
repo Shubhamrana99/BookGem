@@ -33,9 +33,9 @@ export const SignUp = () => {
   };
 
   const handleUserinput = (e) => {
-    setSignUpDetails({ ...signUpDetails, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setSignUpDetails({ ...signUpDetails, [name]: value });
   };
-  console.log(signUpDetails);
 
   return (
     <>

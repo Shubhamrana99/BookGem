@@ -12,27 +12,25 @@ import { SignUp } from "./pages/SignUp/SignUp";
 import { SignIn } from "./pages/SignIn/SignIn";
 import { User } from "./pages/User/User";
 
-
-
-
 function App() {
   return (
     <div className="App">
-    <Header/>
+      <Header />
       <Routes>
-      <Route path="/" element={<Home/>}  />
-      <Route path="/productlistingpage" element={<ProductListingPage/>}  />
-      <Route path="/wishlist" element={<WishList/>}  />
-      <Route path="/cart" element={<Cart/>}  />
-      <Route path="/productdetails" element={<ProductDetails/>}  />
-      <Route path="/user" element={<User/>}/>
-      <Route path="/signin" element={<SignIn/>} />
-      <Route path="/signup" element={<SignUp/>} />
-      
-      <Route path="/mockman" element={<Mockman/>}  />
+        <Route path="/" element={<Home />} />
+        <Route path="/productlistingpage" element={<ProductListingPage />} />
+        <Route path="/wishlist" element={<WishList />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/productdetails" element={<ProductDetails />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/address" element={<SignUp />} />
+
+        <Route path="/mockman" element={<Mockman />} />
       </Routes>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }

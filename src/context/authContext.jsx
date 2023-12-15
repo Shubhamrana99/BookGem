@@ -15,8 +15,11 @@ export const AuthProvider = ({ children }) => {
     password: "",
     confirmPassword: "",
   });
+
   const [isPassVisible, setIsPassVisible] = useState(false);
   const navigate = useNavigate();
+
+  const [user, setUser] = useState();
 
   const userLogIn = async () => {
     try {
@@ -24,7 +27,7 @@ export const AuthProvider = ({ children }) => {
       if (status === 200) {
         authDispatch({ type: "HANDLE_SIGNIN", payload: true });
         localStorage.setItem(
-          "loginUserDetails",
+          "userSignUpDetails",
           JSON.stringify(data.foundUser)
         );
       }
@@ -43,22 +46,47 @@ export const AuthProvider = ({ children }) => {
 
   const userSignUpDetails = async () => {
     try {
-      const {
-        data: { createdUser, encodedToken },
-      } = await axios.post("/api/auth/signup", signUpDetails);
-      // const{
-      //     data: {createdUser,encodedToken}
-      // }=await axios.post("/api/auth/signup",signUpDetails);
-      authDispatch({ type: "HANDLE_SIGNIN", payload: true });
-      localStorage.setItem(JSON.stringify("userSignUpDetails", createdUser));
+      const res = await axios.post("/api/auth/signup", signUpDetails);
+      // console.log(res);
+
       localStorage.setItem(
-        JSON.stringify("encodedTokenforSignUp", encodedToken)
+        "userSignUpDetails",
+        JSON.stringify(res.data.createdUser)
       );
+
+      localStorage.setItem(
+        "encodedTokenforSignUp",
+        JSON.stringify(res.data.encodedToken)
+      );
+
+      setUser(res.data.createdUser);
+      authDispatch({ type: "HANDLE_SIGNIN", payload: true });
       navigate("/productlistingpage");
     } catch (error) {
       console.error("Error in userSignUpDetails:", error);
     }
   };
+
+  // const userSignUpDetails = async () => {
+  //   try {
+  //     const {
+  //       data: { createdUser, encodedToken },
+  //     } = await axios.post("/api/auth/signup", signUpDetails);
+
+  //     localStorage.setItem("userSignUpDetails", JSON.stringify(createdUser));
+  //     localStorage.setItem(
+  //       "encodedTokenforSignUp",
+  //       JSON.stringify(encodedToken)
+  //     );
+  //     setUser(JSON.stringify(createdUser));
+  //     authDispatch({ type: "HANDLE_SIGNIN", payload: true });
+  //     navigate("/productlistingpage");
+  //   } catch (error) {
+  //     console.error("Error in userSignUpDetails:", error);
+  //   }
+  // };
+
+  // console.log(user);
 
   const guestSignIn = async (email, password) => {
     try {
@@ -87,6 +115,7 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
+        user,
         userDetails,
         setUserDetails,
         authState,
