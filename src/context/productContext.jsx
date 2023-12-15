@@ -16,6 +16,8 @@ export const ProductProvider = ({ children }) => {
         status,
         data: { products },
       } = await productServices();
+      // export const productServices=async()=>await axios("/api/products");
+
       if (status === 200) {
         productDispatch({ type: "DISPLAY_BOOKLIST", payload: products });
       }

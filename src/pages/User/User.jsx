@@ -57,7 +57,7 @@ export const User = () => {
               Sign Out
             </button>
 
-            <button onClick={navigate("/address")} className="addressbtn">
+            <button onClick={setShowAddressPageToggle} className="addressbtn">
               Add Address
             </button>
           </div>

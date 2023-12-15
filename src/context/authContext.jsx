@@ -24,18 +24,35 @@ export const AuthProvider = ({ children }) => {
   const userLogIn = async () => {
     try {
       const { status, data } = await axios.post("/api/auth/login", userDetails);
+
       if (status === 200) {
-        authDispatch({ type: "HANDLE_SIGNIN", payload: true });
         localStorage.setItem(
           "userSignUpDetails",
           JSON.stringify(data.foundUser)
         );
+        authDispatch({ type: "HANDLE_SIGNIN", payload: true });
       }
       localStorage.setItem("encodedToken", JSON.stringify(data.encodedToken));
     } catch (error) {
       console.error(error);
     }
   };
+
+  // const userLogIn = async () => {
+  //   try {
+  //     const { status, data } = await axios.post("/api/auth/login", userDetails);
+  //     if (status === 200) {
+  //       authDispatch({ type: "HANDLE_SIGNIN", payload: true });
+  //       localStorage.setItem(
+  //         "userSignUpDetails",
+  //         JSON.stringify(data.foundUser)
+  //       );
+  //     }
+  //     localStorage.setItem("encodedToken", JSON.stringify(data.encodedToken));
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const handleSignOut = () => {
     authDispatch({ type: "HANDLE_SIGNOUT", payload: false });
@@ -55,7 +72,7 @@ export const AuthProvider = ({ children }) => {
       );
 
       localStorage.setItem(
-        "encodedTokenforSignUp",
+        "encodedToken",
         JSON.stringify(res.data.encodedToken)
       );
 
@@ -95,13 +112,13 @@ export const AuthProvider = ({ children }) => {
         password,
       });
       if (status === 200) {
+        // authDispatch({ type: "HANDLE_SIGNIN", payload: true });
+        localStorage.setItem(
+          "userSignUpDetails",
+          JSON.stringify(data.foundUser)
+        );
+        localStorage.setItem("encodedToken", JSON.stringify(data.encodedToken));
         authDispatch({ type: "HANDLE_SIGNIN", payload: true });
-        localStorage.setItem(
-          JSON.stringify("guestSignInDetails", data.foundUser)
-        );
-        localStorage.setItem(
-          JSON.stringify("guestEncodedToken", data.encodedToken)
-        );
       }
     } catch (error) {
       console.error("Error in GuestSignIn", error);
