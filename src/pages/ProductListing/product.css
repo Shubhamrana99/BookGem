@@ -1,11 +1,8 @@
 .productListing-container {
-  /* margin: 120px 2vw 2vw 2vw; */
-  margin-top: 120px;
-
+  margin-top: 100px;
   display: flex;
   gap: 50px;
   padding-inline: 1.5rem;
-
   height: 100%;
   text-align: left;
   font-size: large;
@@ -20,7 +17,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 2rem;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
 }
 
 .productListing-container .filter-header .filter-heading {
@@ -70,11 +67,6 @@
   font-size: medium;
 }
 
-/* .filter-category-container .category-label {
-}
-.filter-category-container .category-input {
-} */
-
 .filter-rating-container {
   width: 10rem;
   font-size: small;
@@ -96,7 +88,7 @@
 }
 
 .productListing-container .books-container {
-  margin: 1rem 0;
+  padding: 1rem 0;
 }
 
 .books-container .book-heading {

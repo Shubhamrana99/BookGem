@@ -6,22 +6,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2vw;
+  padding: 1.5vw;
   position: fixed;
   top: 0;
   z-index: 10;
 }
 
-.header-container,
-.header-logo {
+.header-container .header-logo {
   font-size: 5vw;
   font-weight: 800;
   cursor: pointer;
   padding-left: 0.5rem;
 }
 
-.header-container,
-.header-inputsearch {
+.header-container .header-inputsearch {
   padding: 1vw 4vw 1vw 1vw;
   font-size: 2vw;
   border: none;
@@ -30,14 +28,12 @@
   border-radius: 20px;
 }
 
-.header-container,
-.nav-menu {
+.header-container .nav-menu {
   display: flex;
   gap: 20px;
   align-items: center;
 }
-.header-container,
-.nav-menu i {
+.header-container .nav-menu i {
   font-size: 3vw;
   padding: 1rem;
   /* font-weight: 700; */
