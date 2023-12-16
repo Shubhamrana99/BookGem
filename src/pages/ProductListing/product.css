@@ -27,6 +27,74 @@
   font-weight: bold;
 }
 
+.productListing-container .filter-header .filter-clear-btn {
+  background: transparent;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  padding-right: 2rem;
+  width: fit-content;
+}
+
+.filter-sorting-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem 0;
+  margin-bottom: 1.5rem;
+}
+.filter-sorting-container .radio-input-field {
+  cursor: pointer;
+  width: fit-content;
+  font-size: medium;
+  font-weight: 450;
+}
+.sortfilter-heading,
+.categoryfilter-heading,
+.ratingfilter-heading {
+  font-weight: 600;
+}
+.filter-sorting-container .radio-filter,
+.filter-category-container .category-input {
+  margin-right: 0.5rem;
+  cursor: pointer;
+  /* accent-color: var(--primary-color); */
+  accent-color: #dc7012;
+}
+
+.filter-category-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem 0;
+  margin-bottom: 1.5rem;
+  width: fit-content;
+  font-size: medium;
+}
+
+/* .filter-category-container .category-label {
+}
+.filter-category-container .category-input {
+} */
+
+.filter-rating-container {
+  width: 10rem;
+  font-size: small;
+}
+
+.filter-rating-container .ratingsfilter-text {
+  margin-top: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.filter-rating-container .ratingsfilter-text p {
+  font-size: small;
+}
+.filter-rating-container .filter-input-range {
+  margin-top: 1.5rem;
+  width: 9.8rem;
+  accent-color: #dc7012;
+}
+
 .productListing-container .books-container {
   margin: 1rem 0;
 }

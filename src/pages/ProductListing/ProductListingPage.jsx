@@ -24,12 +24,12 @@ export const ProductListingPage = () => {
 
           <div className="filter-sorting-container">
             <p className="sortfilter-heading">Sort By</p>
-            <label>
-              <input type="radio" />
+            <label className="radio-input-field">
+              <input className="radio-filter" type="radio" />
               Price - Low to High
             </label>
-            <label>
-              <input type="radio" />
+            <label className="radio-input-field">
+              <input className="radio-filter" type="radio" />
               Price - High to Low
             </label>
           </div>
@@ -38,8 +38,8 @@ export const ProductListingPage = () => {
             <p className="categoryfilter-heading">Categories</p>
             {categoriesList.map(({ id, categoryName }) => {
               return (
-                <label key={id}>
-                  <input type="checkbox" />
+                <label key={id} className="category-label">
+                  <input type="checkbox" className="category-input" />
                   {categoryName}
                 </label>
               );
@@ -51,9 +51,9 @@ export const ProductListingPage = () => {
             <div className="ratingsfilter-text">
               <p> 1 ★ </p> <p> 2 ★ </p> <p> 3 ★ </p> <p> 4 ★ </p> <p> 5 ★ </p>
             </div>
-            <label>
+            <label className="rating-label">
               <input
-                className="filter-range"
+                className="filter-input-range"
                 type="range"
                 min="1"
                 max="5"
