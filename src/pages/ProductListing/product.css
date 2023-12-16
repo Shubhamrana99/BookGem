@@ -1,14 +1,25 @@
 .productListing-container {
   /* margin: 120px 2vw 2vw 2vw; */
   margin-top: 120px;
-  /* display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-flow: row wrap;
-  gap: 2rem;
-  list-style-type: none; */
-  /* padding: 1rem;
-  flex-grow: 1; */
+
+  display: flex;
+  gap: 50px;
+  padding: 1.5rem;
+
+  height: 100%;
+  text-align: left;
+  font-size: large;
+}
+
+.productListing-container .filter-container {
+  width: 50rem;
+  border-right: 1.5px solid rgba(128, 128, 128, 0.659);
+}
+
+.productListing-container .filter-header-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
 }
 
 .productListing-container .books-container {
