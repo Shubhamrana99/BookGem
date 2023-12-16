@@ -78,6 +78,9 @@
 
 .red-text {
   color: #e74c3c;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding-block: 5px;
 }
 
 .tag-text {

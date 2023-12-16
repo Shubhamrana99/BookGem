@@ -46,7 +46,7 @@ export const ProductDetails = () => {
             <p className="discount-percentage">{discountedPrice}% OFF</p>
           </div>
 
-          <p className="red-text">Hurry , Only Few Left !</p>
+          <p className="red-text">⚡Hurry , Only Few Left !</p>
 
           <div className="tag-text">
             <p>🏷️ Fastest Delivery</p>
