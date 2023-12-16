@@ -18,12 +18,12 @@ export const ProductListingPage = () => {
       <div className="productListing-container">
         <div className="filter-container">
           <div className="filter-header">
-            <p>Filters</p>
-            <button>Clear</button>
+            <p className="filter-heading">Filters</p>
+            <button className="filter-clear-btn">Clear</button>
           </div>
 
           <div className="filter-sorting-container">
-            <p className="sortfilter-heading"></p>
+            <p className="sortfilter-heading">Sort By</p>
             <label>
               <input type="radio" />
               Price - Low to High
