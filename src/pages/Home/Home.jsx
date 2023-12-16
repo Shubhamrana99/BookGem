@@ -15,7 +15,7 @@ export const Home = () => {
       <div className="home-content-container">
         <p>Welcome to BookGem,</p>
         <h2>Where Every Page is a Treasure</h2>
-        <Link className="products-link">
+        <Link className="products-link" to={"/productlistingpage"}>
           Explore now <i class="bx bxs-right-arrow"></i>
         </Link>
       </div>
