@@ -32,12 +32,47 @@ export const ProductProvider = ({ children }) => {
 
   // const {bookList}=productState;
 
+  const searchedFilteredProducts =
+    productState?.inputSearch.length > 0
+      ? productState?.bookList.filter(({ name }) =>
+          name.toLowerCase().includes(productState?.inputSearch.toLowerCase())
+        )
+      : productState?.bookList;
+
+  const sortFilteredProducts =
+    productState?.inputSort.length > 0
+      ? productState?.inputSort === "lowtohigh"
+        ? [...searchedFilteredProducts].sort((a, b) => a?.price - b?.price)
+        : [...searchedFilteredProducts].sort((a, b) => b?.price - a?.price)
+      : searchedFilteredProducts;
+
+  const categoyFilteredProducts =
+    productState?.inputCategory.length > 0
+      ? [...sortFilteredProducts].filter(({ category }) =>
+          productState?.inputCategory.includes(category)
+        )
+      : sortFilteredProducts;
+
+  const ratingFilteredProduct =
+    productState?.inputRating > 1
+      ? [...categoyFilteredProducts].filter(
+          ({ rating }) => productState.inputRating >= rating
+        )
+      : categoyFilteredProducts;
+
   const getDiscount = (originalPrice, price) => {
     return Math.trunc(((originalPrice - price) / originalPrice) * 100);
   };
 
   return (
-    <ProductContext.Provider value={{ productState, getDiscount }}>
+    <ProductContext.Provider
+      value={{
+        productState,
+        getDiscount,
+        productDispatch,
+        ratingFilteredProduct,
+      }}
+    >
       {children}
     </ProductContext.Provider>
   );

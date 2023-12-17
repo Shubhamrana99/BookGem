@@ -2,10 +2,12 @@ import { useContext } from "react";
 import "./bookListCard.css";
 import { ProductContext } from "../../context/productContext";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../context/cartContext";
 
 export const BookListCard = ({ book }) => {
   const { getDiscount } = useContext(ProductContext);
   const navigate = useNavigate();
+  const { bookInCart } = useContext(CartContext);
 
   const { id, img, name, author, price, originalPrice, rating } = book;
 
@@ -41,9 +43,15 @@ export const BookListCard = ({ book }) => {
           <p className="discount">({discountInPercentage}% OFF)</p>
         </div>
 
-        <button onClick={() => handleAddTocart(book)}>
-          <i class="bx bxs-cart"></i> Add to Cart
-        </button>
+        <div className="cart-btn-container">
+          {bookInCart(id) ? (
+            <button></button>
+          ) : (
+            <button onClick={() => handleAddTocart(book)}>
+              <i class="bx bxs-cart"></i> Add to Cart
+            </button>
+          )}
+        </div>
 
         <div className="addToWishlist-container">
           <div className="fill-heart">

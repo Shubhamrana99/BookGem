@@ -1,8 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import "./header.css";
+import { useContext } from "react";
+import { ProductContext } from "../../context/productContext";
 
 export const Header = () => {
   const navigate = useNavigate();
+  const {
+    productState: { inputSearch },
+    productDispatch,
+  } = useContext(ProductContext);
+
+  const handleInputSearch = (e) => {
+    productDispatch({ type: "SET_SEARCH_INPUT", payload: e.target.value });
+  };
 
   return (
     <nav className="header-container">
@@ -14,8 +24,8 @@ export const Header = () => {
         <input
           className="header-inputsearch"
           type="text"
-          value={""}
-          onChange={""}
+          value={inputSearch}
+          onChange={handleInputSearch}
           placeholder="Search books here..."
         />
       </label>

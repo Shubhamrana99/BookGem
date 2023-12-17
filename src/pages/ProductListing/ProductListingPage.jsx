@@ -6,12 +6,30 @@ import { CategoryContext } from "../../context/categoryContext";
 
 export const ProductListingPage = () => {
   const {
-    productState: { bookList },
+    productState: { bookList, inputSort, inputCategory, inputRating },
+    productDispatch,
+    ratingFilteredProduct,
   } = useContext(ProductContext);
 
   const {
     categoriesState: { categoriesList },
   } = useContext(CategoryContext);
+
+  const handleSortFilter = (e) => {
+    productDispatch({ type: "SET_SORT_INPUT", payload: e.target.value });
+  };
+
+  const handleCategoryFilter = (e) => {
+    productDispatch({ type: "SET_CATEGORY_INPUT", payload: e.target.value });
+  };
+
+  const handleRatingFilter = (e) => {
+    productDispatch({ type: "SET_RATING_INPUT", payload: e.target.value });
+  };
+
+  const handleClearBtn = () => {
+    productDispatch({ type: "SET_CLEAR_BTN", payload: bookList });
+  };
 
   return (
     <React.Fragment>
@@ -19,17 +37,31 @@ export const ProductListingPage = () => {
         <div className="filter-container">
           <div className="filter-header">
             <p className="filter-heading">Filters</p>
-            <button className="filter-clear-btn">Clear</button>
+            <button className="filter-clear-btn" onClick={handleClearBtn}>
+              Clear
+            </button>
           </div>
 
           <div className="filter-sorting-container">
             <p className="sortfilter-heading">Sort By</p>
             <label className="radio-input-field">
-              <input className="radio-filter" type="radio" />
+              <input
+                className="radio-filter"
+                type="radio"
+                value={"lowtohigh"}
+                checked={inputSort === "lowtohigh"}
+                onChange={handleSortFilter}
+              />
               Price - Low to High
             </label>
             <label className="radio-input-field">
-              <input className="radio-filter" type="radio" />
+              <input
+                className="radio-filter"
+                type="radio"
+                checked={inputSort === "hightolow"}
+                value={"hightolow"}
+                onChange={handleSortFilter}
+              />
               Price - High to Low
             </label>
           </div>
@@ -39,7 +71,13 @@ export const ProductListingPage = () => {
             {categoriesList.map(({ id, categoryName }) => {
               return (
                 <label key={id} className="category-label">
-                  <input type="checkbox" className="category-input" />
+                  <input
+                    type="checkbox"
+                    className="category-input"
+                    value={categoryName}
+                    onChange={handleCategoryFilter}
+                    checked={inputCategory.includes(categoryName) && true}
+                  />
                   {categoryName}
                 </label>
               );
@@ -55,10 +93,12 @@ export const ProductListingPage = () => {
               <input
                 className="filter-input-range"
                 type="range"
-                min="1"
-                max="5"
-                step="1"
+                min={1}
+                max={5}
+                step={1}
+                value={inputRating}
                 defaultValue={5}
+                onChange={handleRatingFilter}
               />
             </label>
           </div>
@@ -67,7 +107,7 @@ export const ProductListingPage = () => {
         <div className="books-container">
           <h1 className="book-heading">Showing Books</h1>
           <div className="bookListCard-container">
-            {bookList.map((book) => {
+            {ratingFilteredProduct.map((book) => {
               return <BookListCard key={book.id} book={book} />;
             })}
           </div>
