@@ -12,6 +12,7 @@ export const Header = () => {
 
   const handleInputSearch = (e) => {
     productDispatch({ type: "SET_SEARCH_INPUT", payload: e.target.value });
+    navigate("/productlistingpage");
   };
 
   return (

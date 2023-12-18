@@ -17,7 +17,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 1.5rem;
-  padding-top: 1.5rem;
+  padding-top: 1rem;
 }
 
 .productListing-container .filter-header .filter-heading {
