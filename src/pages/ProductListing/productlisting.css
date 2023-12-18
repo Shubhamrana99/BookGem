@@ -2,13 +2,13 @@
   margin-top: 100px;
   display: flex;
   gap: 50px;
-  padding-inline: 1.5rem;
+  padding: 1rem;
   height: 100%;
   text-align: left;
   font-size: large;
 }
 
-.productListing-container .filter-container {
+.productListing-container .filters-container {
   width: 300px;
   border-right: 1.5px solid rgba(128, 128, 128, 0.659);
 }
@@ -16,7 +16,7 @@
 .productListing-container .filter-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   padding-top: 1.5rem;
 }
 
@@ -25,12 +25,13 @@
 }
 
 .productListing-container .filter-header .filter-clear-btn {
-  background: transparent;
-  font-size: 16px;
-  border: none;
   cursor: pointer;
-  padding-right: 2rem;
+  background: transparent;
   width: fit-content;
+  text-decoration: underline;
+}
+.productListing-container .filter-header .filter-clear-btn:hover {
+  color: #dc7012;
 }
 
 .filter-sorting-container {
@@ -38,23 +39,19 @@
   flex-direction: column;
   gap: 0.3rem 0;
   margin-bottom: 1.5rem;
-}
-.filter-sorting-container .radio-input-field {
-  cursor: pointer;
-  width: fit-content;
   font-size: medium;
-  font-weight: 450;
 }
+
 .sortfilter-heading,
 .categoryfilter-heading,
 .ratingfilter-heading {
   font-weight: 600;
 }
+
 .filter-sorting-container .radio-filter,
 .filter-category-container .category-input {
   margin-right: 0.5rem;
   cursor: pointer;
-  /* accent-color: var(--primary-color); */
   accent-color: #dc7012;
 }
 
@@ -63,7 +60,6 @@
   flex-direction: column;
   gap: 0.3rem 0;
   margin-bottom: 1.5rem;
-  width: fit-content;
   font-size: medium;
 }
 
@@ -91,7 +87,7 @@
   padding: 1rem 0;
 }
 
-.books-container .book-heading {
+.productListing-container .books-container h1 {
   margin: 0 0 2rem 2rem;
 }
 
