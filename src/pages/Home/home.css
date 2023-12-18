@@ -76,9 +76,6 @@
   background-color: white;
   padding: 1rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  /* transition: transform .2s ease, -webkit-transform .2s ease;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
-  /* border-radius: 1rem; */
   border-radius: 50%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -100,9 +97,7 @@
 
 @media (max-width: 500px) {
   .home-container {
-    /* width: 100%; */
     margin: 200px 6vw 6vw 6vw;
-    /* background-color: aqua; */
   }
   .home-container .home-content-container {
     height: 70vh;

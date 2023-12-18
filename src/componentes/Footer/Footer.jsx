@@ -10,7 +10,7 @@ export const Footer=()=>{
     <p>BookGem is your premier destination for discovering, collecting, and sharing the best in literature. Our mission is to fuel your passion for reading and provide you with a curated selection of books that will spark your imagination.</p>
     <p><small>© 2023 BookGem. All Rights Reserved.</small></p>
         </div>
-
+        
         <div className="footer-connectus" >
         <h3>Connect Us</h3>
         <Link className="quik-links" to={"http://github.com/Shubhamrana99/"}><i class='bx bxl-github' ></i></Link>{"   "}
