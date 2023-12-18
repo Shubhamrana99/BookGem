@@ -3,7 +3,7 @@ export const initialProduct = {
   inputSearch: "",
   inputSort: "",
   inputCategory: [],
-  inputRating: 1,
+  inputRating: 5,
 };
 
 export const productReducer = (state, { type, payload }) => {

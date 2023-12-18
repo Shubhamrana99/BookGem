@@ -93,9 +93,13 @@ export const ProductListingPage = () => {
               <input
                 className="filter-input-range"
                 type="range"
-                min={1}
-                max={5}
-                step={1}
+                // min={1}
+                // max={5}
+                // step={1}
+                min="1"
+                max="5"
+                step="1"
+                name="range"
                 value={inputRating}
                 defaultValue={5}
                 onChange={handleRatingFilter}

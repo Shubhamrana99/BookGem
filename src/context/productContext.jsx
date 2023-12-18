@@ -53,12 +53,11 @@ export const ProductProvider = ({ children }) => {
         )
       : sortFilteredProducts;
 
-  const ratingFilteredProduct =
-    productState?.inputRating > 1
-      ? [...categoyFilteredProducts].filter(
-          ({ rating }) => productState.inputRating >= rating
-        )
-      : categoyFilteredProducts;
+  const ratingFilteredProduct = productState?.inputRating
+    ? [...categoyFilteredProducts].filter(
+        ({ rating }) => productState.inputRating >= rating
+      )
+    : categoyFilteredProducts;
 
   const getDiscount = (originalPrice, price) => {
     return Math.trunc(((originalPrice - price) / originalPrice) * 100);
