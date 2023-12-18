@@ -36,6 +36,7 @@
 .header-container .nav-menu i {
   font-size: 3vw;
   padding: 1rem;
+  cursor: pointer;
   /* font-weight: 700; */
 }
 

@@ -10,7 +10,7 @@
 
 .productListing-container .filters-container {
   width: 300px;
-  border-right: 1.5px solid rgba(128, 128, 128, 0.659);
+  /* border-right: 1.5px solid rgba(128, 128, 128, 0.659); */
 }
 
 .productListing-container .filter-header {
