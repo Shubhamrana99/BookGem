@@ -3,15 +3,11 @@ import { SignIn } from "../SignIn/SignIn";
 import "./user.css";
 import { AuthContext } from "../../context/authContext";
 import { AddressContext } from "../../context/addressContext";
-import { AddressForm } from "../../utils/address/AddressForm";
 import { useNavigate } from "react-router-dom";
 
 export const User = () => {
   const { authState, handleSignOut } = useContext(AuthContext);
-  const {
-    addressesData: { addressDetails, showAddressToggle },
-    setShowAddressPageToggle,
-  } = useContext(AddressContext);
+  const { address } = useContext(AddressContext);
 
   const user = JSON.parse(localStorage.getItem("userSignUpDetails"));
   // const user = JSON.parse(localStorage.getItem("user"));
@@ -37,10 +33,10 @@ export const User = () => {
             </div>
 
             <div className="address-details">
-              {addressDetails.map(
+              {address?.map(
                 ({ id, name, area, city, state, pincode, phoneNumber }) => {
                   return (
-                    <li key={id}>
+                    <li key={id} className="address-list">
                       <p>{name}</p>
                       <p>{area}</p>
                       <p>{city}</p>
@@ -57,15 +53,13 @@ export const User = () => {
               Sign Out
             </button>
 
-            <button onClick={setShowAddressPageToggle} className="addressbtn">
+            <button onClick={() => navigate("/address")} className="addressbtn">
               Add Address
             </button>
           </div>
         )}
 
-        <div className="address-container">
-          {showAddressToggle && <AddressForm />}
-        </div>
+        <div className="address-container"></div>
       </div>
     </>
   );

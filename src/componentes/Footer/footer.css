@@ -28,17 +28,21 @@
 
 .footer-connectus {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 .footer .footer-connectus .quik-links {
   color: #fff;
   text-decoration: none;
   cursor: pointer;
+  font-size: 30px;
+  padding-inline: 5px;
 }
-.footer .footer-connectus h3 {
+.footer .footer-connectus .connect-us {
   margin-bottom: 1.5vw;
   font-size: 2.5vw;
 }
-.footer .footer-quick-links h3 {
+.footer .footer-quick-links .quik-links {
   margin-bottom: 1.5vw;
   font-size: 2.5vw;
 }

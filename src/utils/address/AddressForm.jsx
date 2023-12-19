@@ -1,105 +1,123 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "./addressform.css";
 import { AddressContext } from "../../context/addressContext";
+import { useNavigate } from "react-router-dom";
 
 export const AddressForm = () => {
-  const {
-    addressDetails,
-    setAddressDetails,
-    setShowAddressPageToggle,
-    submitAddressDetails,
-  } = useContext(AddressContext);
+  const { address, setAddress } = useContext(AddressContext);
+
+  const navigate = useNavigate();
+
+  const [input, setInput] = useState({
+    id: "",
+    name: "",
+    area: "",
+    city: "",
+    state: "",
+    pincode: "",
+    phoneNumber: "",
+  });
 
   const handleAddressInput = (e) => {
-    setAddressDetails({ ...addressDetails, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setInput((pre) => ({ ...pre, [name]: value }));
   };
-  //   console.log(addressDetails);
 
-  const submitBtnHandler = (e) => {
-    e.preventDefault();
-    submitAddressDetails({ ...addressDetails, id: addressDetails.length + 1 });
-    setShowAddressPageToggle(false);
+  const addtoAddress = (inputAddress) => {
+    // e.preventDefault();
+    console.log("adding  address:");
+    setAddress([...address, inputAddress]);
+    setInput({
+      id: "",
+      name: "",
+      area: "",
+      city: "",
+      state: "",
+      pincode: "",
+      phoneNumber: "",
+    });
+    navigate("/user");
   };
 
   return (
     <>
+      <div className="address-page-container"></div>
       <div className="address-container">
         <h3>Address</h3>
 
-        <form onSubmit={submitBtnHandler} className="input-fields">
-          <label>
+        <div className="input-fields">
+          <label className="input-field-label">
             <input
               type="text"
               placeholder="Name"
               name="name"
-              value={addressDetails.name}
+              value={input.name}
               onChange={handleAddressInput}
+              className="input-field"
             />
           </label>
           <br />
-          <label>
+          <label className="input-field-label">
             <input
               type="text"
               placeholder="Area"
               name="area"
-              value={addressDetails.area}
+              value={input.area}
               onChange={handleAddressInput}
+              className="input-field"
             />
           </label>
           <br />
-          <label>
+          <label className="input-field-label">
             <input
               type="text"
               placeholder="City"
               name="city"
-              value={addressDetails.city}
+              value={input.city}
               onChange={handleAddressInput}
+              className="input-field"
             />
           </label>
           <br />
-          <label>
+          <label className="input-field-label">
             <input
               type="text"
               placeholder="State"
               name="state"
-              value={addressDetails.state}
+              value={input.state}
               onChange={handleAddressInput}
+              className="input-field"
             />
           </label>
           <br />
-          <label>
+          <label className="input-field-label">
             <input
               type="number"
               placeholder="PinCode"
               name="pincode"
-              value={addressDetails.pincode}
+              value={input.pincode}
               onChange={handleAddressInput}
+              className="input-field"
             />
           </label>
           <br />
-          <label>
+          <label className="input-field-label">
             <input
               type="number"
               placeholder="Phone No."
               name="phoneNumber"
-              value={addressDetails.phoneNumber}
+              value={input.phoneNumber}
               onChange={handleAddressInput}
+              className="input-field"
             />
           </label>
 
           <br />
-        </form>
+        </div>
 
-        <div className="submit-cancel-btn">
-          <button className="submit-btn" type="submit">
+        <div>
+          <button className="submit-btn" onClick={() => addtoAddress(input)}>
             Submit
-          </button>
-
-          <button
-            className="cancel-btn"
-            onClick={() => setShowAddressPageToggle(false)}
-          >
-            Cancel
           </button>
         </div>
       </div>

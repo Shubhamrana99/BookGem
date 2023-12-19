@@ -12,8 +12,8 @@ export const Footer=()=>{
         </div>
         
         <div className="footer-connectus" >
-        <h3>Connect Us</h3>
-        <Link className="quik-links" to={"http://github.com/Shubhamrana99/"}><i class='bx bxl-github' ></i></Link>{"   "}
+        <h3 className="connect-us">Connect Us</h3>
+        <Link  className="quik-links" to={"http://github.com/Shubhamrana99/"}><i class='bx bxl-github' ></i></Link>{"   "}
         <Link className="quik-links" to={"https://twitter.com/shubham19rana"}><i class='bx bxl-twitter' ></i></Link> {"   "}
         
         <Link className="quik-links" to={"mailto:shubhamrana19599@gmail.com"}><i class='bx bxl-gmail' ></i></Link>
@@ -21,7 +21,7 @@ export const Footer=()=>{
         </div>
 
         <div className="footer-quick-links" >
-        <h3>Quick Links</h3>
+        <h3 className="quik-links">Quick Links</h3>
         </div>
        
         </div>

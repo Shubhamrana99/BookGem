@@ -11,6 +11,7 @@ import { ProductDetails } from "./pages/ProductDetails/ProductDetails";
 import { SignUp } from "./pages/SignUp/SignUp";
 import { SignIn } from "./pages/SignIn/SignIn";
 import { User } from "./pages/User/User";
+import { AddressForm } from "./utils/address/AddressForm";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
         <Route path="/user" element={<User />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/address" element={""} />
+        <Route path="/address" element={<AddressForm />} />
 
         <Route path="/mockman" element={<Mockman />} />
       </Routes>

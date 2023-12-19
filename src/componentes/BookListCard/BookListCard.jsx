@@ -15,6 +15,9 @@ export const BookListCard = ({ book }) => {
 
   const discountInPercentage = getDiscount(originalPrice, price);
 
+  const userToken = localStorage.getItem("encodedToken");
+  // console.log(userToken);
+
   return (
     <div className="bookListcard-container">
       <img
@@ -47,7 +50,7 @@ export const BookListCard = ({ book }) => {
           {bookInCart(id) ? (
             <button></button>
           ) : (
-            <button onClick={() => handleAddTocart(book)}>
+            <button onClick={() => handleAddTocart(book, userToken)}>
               <i class="bx bxs-cart"></i> Add to Cart
             </button>
           )}
