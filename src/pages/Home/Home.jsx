@@ -1,14 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
 import { useContext } from "react";
 import { CategoryContext } from "../../context/categoryContext";
+import { ProductContext } from "../../context/productContext";
 
 export const Home = () => {
   const {
     categoriesState: { categoriesList },
   } = useContext(CategoryContext);
 
+  const { productDispatch } = useContext(ProductContext);
+
+  const navigate = useNavigate();
+
   // console.log(categoriesList);
+
+  const handleCategoryList = (categoryName) => {
+    productDispatch({ type: "SET_CATEGORY_INPUT", payload: categoryName });
+    navigate("/productlistingpage");
+  };
 
   return (
     <div className="home-container">
@@ -31,7 +41,11 @@ export const Home = () => {
       <div className="category-details-conatiner">
         {categoriesList ? (
           categoriesList.map(({ id, categoryName, description }) => (
-            <div className="category-container" key={id}>
+            <div
+              className="category-container"
+              key={id}
+              onClick={() => handleCategoryList(categoryName)}
+            >
               <p>{categoryName}</p>
               <small>{description}</small>
             </div>
