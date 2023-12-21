@@ -2,21 +2,35 @@ import { useContext } from "react";
 import "./bookListCard.css";
 import { ProductContext } from "../../context/productContext";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../context/cartContext";
+import { CartContext } from "../../context/cart-Context";
+import { WishListContext } from "../../context/wishList-context";
 
+// export const BookListCard = ({
+//   id,
+//   img,
+//   name,
+//   author,
+//   price,
+//   originalPrice,
+//   rating,
+// }) => {
 export const BookListCard = ({ book }) => {
-  const { getDiscount } = useContext(ProductContext);
+  const { getDiscount, ratingFilteredProduct } = useContext(ProductContext);
+  const { handleAddToCart, bookInCart } = useContext(CartContext);
+  // const { handleAddToWishList } = useContext(WishListContext);
+
   const navigate = useNavigate();
-  const { bookInCart } = useContext(CartContext);
 
   const { id, img, name, author, price, originalPrice, rating } = book;
 
-  const handleAddTocart = () => {};
-
   const discountInPercentage = getDiscount(originalPrice, price);
 
-  const userToken = localStorage.getItem("encodedToken");
-  // console.log(userToken);
+  // const userToken = localStorage.getItem("encodedToken");
+
+  // const handleAddToCart = (id, userToken) => {
+  //   const findProduct = ratingFilteredProduct.find((item) => item.id === id);
+  //   addToCart(findProduct, userToken);
+  // };
 
   return (
     <div className="bookListcard-container">
@@ -46,19 +60,30 @@ export const BookListCard = ({ book }) => {
           <p className="discount">({discountInPercentage}% OFF)</p>
         </div>
 
-        <div className="cart-btn-container">
+        <div>
           {bookInCart(id) ? (
-            <button></button>
+            <button
+              className="cart-btn-container"
+              onClick={() => navigate("/cart")}
+            >
+              <i class="bx bxs-cart"></i> Go to Cart
+            </button>
           ) : (
-            <button onClick={() => handleAddTocart(book, userToken)}>
+            <button
+              className="cart-btn-container"
+              // onClick={() => addToCart(book, userToken)}
+              onClick={() => handleAddToCart(book)}
+            >
               <i class="bx bxs-cart"></i> Add to Cart
             </button>
           )}
         </div>
 
         <div className="addToWishlist-container">
-          <div className="fill-heart">
-            {" "}
+          <div
+            className="fill-heart"
+            // onClick={() => handleAddToWishList(book, userToken)}
+          >
             <i class="bx bxs-heart"></i>
           </div>
         </div>

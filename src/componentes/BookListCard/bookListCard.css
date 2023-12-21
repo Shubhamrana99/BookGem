@@ -73,14 +73,14 @@
   font-weight: 700;
 }
 
-.bookListcard-container button {
+.bookListcard-container .cart-btn-container {
   width: 100%;
   padding: 0.5rem;
   margin-top: 0.5rem;
   background-color: var(--primary-color);
   color: white;
 }
-.bookListcard-container button:hover {
+.bookListcard-container .cart-btn-container:hover {
   color: var(--primary-color);
   background-color: #fff;
   border: solid 2px var(--primary-color);

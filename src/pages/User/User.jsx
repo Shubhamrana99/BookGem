@@ -13,7 +13,7 @@ export const User = () => {
   // const user = JSON.parse(localStorage.getItem("user"));
   // console.log(userDetails);
 
-  console.log(user);
+  // console.log(user);
 
   const navigate = useNavigate();
 

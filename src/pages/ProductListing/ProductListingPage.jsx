@@ -112,7 +112,7 @@ export const ProductListingPage = () => {
           <h1 className="book-heading">Showing Books</h1>
           <div className="bookListCard-container">
             {ratingFilteredProduct.map((book) => {
-              return <BookListCard key={book.id} book={book} />;
+              return <BookListCard book={book} />;
             })}
           </div>
         </div>
