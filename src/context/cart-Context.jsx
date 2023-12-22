@@ -19,7 +19,7 @@ export const CartProvider = ({ children }) => {
         // } = response;
         console.log(response);
         // if (status === 200) {
-        //   setCartProducts([...cart]);
+        //   setCartProducts(cart);
         // }
       } catch (error) {
         console.error(error);
@@ -28,7 +28,8 @@ export const CartProvider = ({ children }) => {
     userToken && getCart();
   }, [userToken]);
 
-  const handleAddToCart = async (book) => {
+  const handleAddToCart = async (book, ID) => {
+    console.log("by clicking addtocart ", ID);
     try {
       const response = await axios.post(
         "/api/user/cart",

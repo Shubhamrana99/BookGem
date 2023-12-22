@@ -97,3 +97,7 @@
 .addToWishlist-container .fill-heart:hover {
   color: red;
 }
+
+.addToWishlist-container .fill-heart-red {
+  color: red;
+}
