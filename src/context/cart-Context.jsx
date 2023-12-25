@@ -28,13 +28,14 @@ export const CartProvider = ({ children }) => {
     userToken && getCart();
   }, [userToken]);
 
-  const handleAddToCart = async (book, ID) => {
-    console.log("by clicking addtocart ", ID);
+  const handleAddToCart = async (book) => {
+    console.log(userToken);
+    console.log(book);
     try {
       const response = await axios.post(
         "/api/user/cart",
         {
-          book,
+          product: book,
         },
         { headers: { authorization: userToken } }
       );

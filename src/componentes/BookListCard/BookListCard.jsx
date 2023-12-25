@@ -21,7 +21,7 @@ export const BookListCard = ({ book }) => {
 
   const navigate = useNavigate();
 
-  const { id, img, name, author, price, originalPrice, rating } = book;
+  const { _id, img, name, author, price, originalPrice, rating } = book;
 
   const discountInPercentage = getDiscount(originalPrice, price);
 
@@ -33,15 +33,15 @@ export const BookListCard = ({ book }) => {
   // };
 
   const handleProductToCart = () => {
-    if (bookInCart(id)) {
+    if (bookInCart(_id)) {
       navigate("/cart");
     } else {
-      handleAddToCart(book, id);
+      handleAddToCart(book, _id);
     }
   };
 
   const handleAddProductToWishList = () => {
-    if (bookInWishList(id)) {
+    if (bookInWishList(_id)) {
       navigate("/wishlist");
     } else {
       handleAddToWishList(book);
@@ -53,7 +53,7 @@ export const BookListCard = ({ book }) => {
       <img
         alt={name}
         src={img}
-        onClick={() => navigate(`/productdetails/${id}`)}
+        onClick={() => navigate(`/productdetails/${_id}`)}
       />
 
       <div className="booklistDetails-container">
@@ -78,7 +78,7 @@ export const BookListCard = ({ book }) => {
 
         <div>
           <button className="cart-btn-container" onClick={handleProductToCart}>
-            {bookInCart(id) ? (
+            {bookInCart(_id) ? (
               <div>
                 <i class="bx bxs-cart"></i>Go to Cart
               </div>
@@ -94,7 +94,7 @@ export const BookListCard = ({ book }) => {
           className="addToWishlist-container"
           onClick={handleAddProductToWishList}
         >
-          {bookInWishList(id) ? (
+          {bookInWishList(_id) ? (
             <div className=".fill-heart-red">
               <i class="bx bxs-heart"></i>
             </div>
