@@ -47,13 +47,30 @@ export const WishlistProvider = ({ children }) => {
     }
   };
 
+  const handleRemoveFromWishList = async (bookId) => {
+    try {
+      const res = await axios.delete(`/api/user/wishlist/${bookId}`, {
+        headers: { authorization: userToken },
+      });
+      console.log(res.data.wishlist);
+      setWishList(res.data.wishlist);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const isBookInWishList = (bookID) => {
     return wishList.find(({ _id }) => _id === bookID);
   };
 
   return (
     <WishListContext.Provider
-      value={{ handleAddToWishList, isBookInWishList, wishList }}
+      value={{
+        handleAddToWishList,
+        isBookInWishList,
+        wishList,
+        handleRemoveFromWishList,
+      }}
     >
       {children}
     </WishListContext.Provider>

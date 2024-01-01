@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/cart-Context";
 
 export const WishList = () => {
-  const { wishList } = useContext(WishListContext);
+  const { wishList, handleRemoveFromWishList } = useContext(WishListContext);
   const { handleAddToCart, bookInCart } = useContext(CartContext);
   const navigate = useNavigate();
 
@@ -43,12 +43,18 @@ export const WishList = () => {
                             Go to Cart
                           </button>
                         ) : (
-                          <button className="product-in-cart">
-                            Book in Cart
+                          <button
+                            className="product-in-cart"
+                            onClick={() => handleAddToCart(book)}
+                          >
+                            Add to Cart
                           </button>
                         )}
 
-                        <button className="remove-from-wishlist">
+                        <button
+                          className="remove-from-wishlist"
+                          onClick={() => handleRemoveFromWishList(_id)}
+                        >
                           <i class="bx bx-trash"></i>
                         </button>
                       </div>
