@@ -40,6 +40,11 @@
   /* font-weight: 700; */
 }
 
+.nav-menu .cart-length {
+  font-size: large;
+  border-radius: 50%;
+}
+
 @media (max-width: 500px) {
   .header-container {
     flex-direction: column;

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./header.css";
 import { useContext } from "react";
 import { ProductContext } from "../../context/productContext";
+import { CartContext } from "../../context/cart-Context";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ export const Header = () => {
     productState: { inputSearch },
     productDispatch,
   } = useContext(ProductContext);
+  const { cartProducts } = useContext(CartContext);
 
   const handleInputSearch = (e) => {
     productDispatch({ type: "SET_SEARCH_INPUT", payload: e.target.value });
@@ -44,7 +46,11 @@ export const Header = () => {
         </div>
 
         <div className="icon">
-          <i class="bx bxs-cart" onClick={() => navigate("/cart")}></i>
+          <i class="bx bxs-cart" onClick={() => navigate("/cart")}>
+            <sup className="cart-length">
+              {cartProducts.length ? cartProducts.length : null}
+            </sup>
+          </i>
         </div>
 
         <div className="icon">

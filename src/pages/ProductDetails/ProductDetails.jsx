@@ -11,7 +11,7 @@ export const ProductDetails = () => {
     getDiscount,
   } = useContext(ProductContext);
 
-  const getBook = bookList?.find(({ id }) => id === bookID);
+  const getBook = bookList?.find(({ _id }) => _id === bookID);
   // console.log(getBook);
   const {
     img,

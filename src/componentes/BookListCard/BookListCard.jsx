@@ -5,19 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/cart-Context";
 import { WishListContext } from "../../context/wishList-context";
 
-// export const BookListCard = ({
-//   id,
-//   img,
-//   name,
-//   author,
-//   price,
-//   originalPrice,
-//   rating,
-// }) => {
 export const BookListCard = ({ book }) => {
-  const { getDiscount, ratingFilteredProduct } = useContext(ProductContext);
+  const { getDiscount } = useContext(ProductContext);
   const { bookInCart, handleAddToCart } = useContext(CartContext);
-  const { handleAddToWishList, bookInWishList } = useContext(WishListContext);
+  const { handleAddToWishList, isBookInWishList } = useContext(WishListContext);
 
   const navigate = useNavigate();
 
@@ -25,28 +16,21 @@ export const BookListCard = ({ book }) => {
 
   const discountInPercentage = getDiscount(originalPrice, price);
 
-  // const userToken = localStorage.getItem("encodedToken");
-
-  // const handleAddToCart = (id, userToken) => {
-  //   const findProduct = ratingFilteredProduct.find((item) => item.id === id);
-  //   addToCart(findProduct, userToken);
-  // };
-
   const handleProductToCart = () => {
     if (bookInCart(_id)) {
       navigate("/cart");
     } else {
-      handleAddToCart(book, _id);
+      handleAddToCart(book);
     }
   };
 
-  const handleAddProductToWishList = () => {
-    if (bookInWishList(_id)) {
-      navigate("/wishlist");
-    } else {
-      handleAddToWishList(book);
-    }
-  };
+  // const handleAddProductToWishList = () => {
+  //   if (bookInWishList(_id)) {
+  //     navigate("/wishlist");
+  //   } else {
+  //     handleAddToWishList(book);
+  //   }
+  // };
 
   return (
     <div className="bookListcard-container">
@@ -80,7 +64,7 @@ export const BookListCard = ({ book }) => {
           <button className="cart-btn-container" onClick={handleProductToCart}>
             {bookInCart(_id) ? (
               <div>
-                <i class="bx bxs-cart"></i>Go to Cart
+                <i class="bx bxs-cart"></i> Go to Cart
               </div>
             ) : (
               <div>
@@ -90,16 +74,19 @@ export const BookListCard = ({ book }) => {
           </button>
         </div>
 
-        <div
-          className="addToWishlist-container"
-          onClick={handleAddProductToWishList}
-        >
-          {bookInWishList(_id) ? (
-            <div className=".fill-heart-red">
+        <div className="addToWishlist-container">
+          {isBookInWishList(_id) ? (
+            <div
+              className="fill-heart-red"
+              onClick={() => navigate("/wishlist")}
+            >
               <i class="bx bxs-heart"></i>
             </div>
           ) : (
-            <div className="fill-heart">
+            <div
+              className="fill-heart"
+              onClick={() => handleAddToWishList(book)}
+            >
               <i class="bx bxs-heart"></i>
             </div>
           )}
@@ -109,25 +96,17 @@ export const BookListCard = ({ book }) => {
   );
 };
 
-// <div>
-// {bookInCart(id) ? (
-//   <button
-//     className="cart-btn-container"
-//     onClick={() => navigate("/cart")}
-//   >
-//     <i class="bx bxs-cart"></i> Go to Cart
-//   </button>
+// <div
+// className="addToWishlist-container"
+// onClick={handleAddProductToWishList}
+// >
+// {bookInWishList(_id) ? (
+//   <div className=".fill-heart-red">
+//     <i class="bx bxs-heart"></i>
+//   </div>
 // ) : (
-//   <button
-//     className="cart-btn-container"
-//     // onClick={() => addToCart(book, userToken)}
-//     onClick={() => handleAddToCart(book)}
-//   >
-//     <i class="bx bxs-cart"></i> Add to Cart
-//   </button>
+//   <div className="fill-heart">
+//     <i class="bx bxs-heart"></i>
+//   </div>
 // )}
-// </div>
-
-// <div onClick={() => handleAddToWishList(book, userToken)} >
-//   <i class="bx bxs-heart"></i>
 // </div>

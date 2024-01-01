@@ -8,19 +8,19 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     const getCart = async () => {
-      console.log(userToken);
+      // console.log(userToken);
       try {
         const response = await axios.get("/api/user/cart", {
           headers: { authorization: userToken },
         });
-        // const {
-        //   status,
-        //   data: { cart },
-        // } = response;
-        console.log(response);
-        // if (status === 200) {
-        //   setCartProducts(cart);
-        // }
+        const {
+          status,
+
+          data: { cart },
+        } = response;
+        if (status === 200) {
+          setCartProducts(cart);
+        }
       } catch (error) {
         console.error(error);
       }
@@ -39,16 +39,14 @@ export const CartProvider = ({ children }) => {
         },
         { headers: { authorization: userToken } }
       );
-      // const {
-      //   status,
-      //   data: { cart },
-      // } = response;
+      const {
+        status,
+        data: { cart },
+      } = response;
 
-      console.log(response);
-
-      // if (status === 201) {
-      //   setCartProducts([...cartProducts, cart]);
-      // }
+      if (status === 201) {
+        setCartProducts([...cart]);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -104,11 +102,11 @@ export const CartProvider = ({ children }) => {
   // };
 
   const bookInCart = (productID) => {
-    return cartProducts.find(({ id }) => id === productID);
+    return cartProducts.find(({ _id }) => _id === productID);
   };
 
   return (
-    <CartContext.Provider value={{ bookInCart, handleAddToCart }}>
+    <CartContext.Provider value={{ bookInCart, handleAddToCart, cartProducts }}>
       {children}
     </CartContext.Provider>
   );
