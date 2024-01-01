@@ -8,7 +8,8 @@ import { WishListContext } from "../../context/wishList-context";
 export const BookListCard = ({ book }) => {
   const { getDiscount } = useContext(ProductContext);
   const { bookInCart, handleAddToCart } = useContext(CartContext);
-  const { handleAddToWishList, isBookInWishList } = useContext(WishListContext);
+  const { handleAddToWishList, isBookInWishList, handleRemoveFromWishList } =
+    useContext(WishListContext);
 
   const navigate = useNavigate();
 
@@ -78,7 +79,7 @@ export const BookListCard = ({ book }) => {
           {isBookInWishList(_id) ? (
             <div
               className="fill-heart-red"
-              onClick={() => navigate("/wishlist")}
+              onClick={() => handleRemoveFromWishList(_id)}
             >
               <i class="bx bxs-heart"></i>
             </div>
