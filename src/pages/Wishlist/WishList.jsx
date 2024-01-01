@@ -45,7 +45,10 @@ export const WishList = () => {
                         ) : (
                           <button
                             className="product-in-cart"
-                            onClick={() => handleAddToCart(book)}
+                            onClick={() => {
+                              handleAddToCart(book);
+                              handleRemoveFromWishList(_id);
+                            }}
                           >
                             Add to Cart
                           </button>

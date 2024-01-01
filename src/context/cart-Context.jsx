@@ -52,62 +52,80 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  // const addToCart = async (product, userToken) => {
-  //   // console.log({ product });
-  //   // console.log({ userToken });
-
-  //   try {
-  //     const response = await axios.post(
-  //       "/api/user/cart",
-  //       {
-  //         product,
-  //       },
-  //       {
-  //         headers: { authorization: userToken },
-  //       }
-  //     );
-
-  //     console.log(response);
-  //     // if (response.status === 201) {
-  //     //   setCart(response.data.cart);
-  //     // }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // const handleAddToCart = async (book) => {
-  //   // console.log({ encodedToken });
-  //   // console.log({ book });
-  //   // console.log();
-
-  //   try {
-  //     const res = await axios.post(
-  //       "/api/user/cart",
-  //       {
-  //         book,
-  //       },
-  //       {
-  //         headers: { authorization: userToken },
-  //       }
-  //     );
-  //     // console.log(res);
-  //     if (res.status === 201) {
-  //       console.log(res.data.cart);
-  //       setCartProducts(res.data.cart);
-  //     }
-  //   } catch (error) {
-  //     console.error("error are : ", error);
-  //   }
-  // };
+  const handleRemoveFromCart = async (bookID) => {
+    try {
+      const res = await axios.delete(`/api/user/cart/${bookID}`, {
+        headers: { authorization: userToken },
+      });
+      setCartProducts(res.data.cart);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const bookInCart = (productID) => {
     return cartProducts.find(({ _id }) => _id === productID);
   };
 
   return (
-    <CartContext.Provider value={{ bookInCart, handleAddToCart, cartProducts }}>
+    <CartContext.Provider
+      value={{
+        bookInCart,
+        handleAddToCart,
+        cartProducts,
+        handleRemoveFromCart,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
 };
+
+// const addToCart = async (product, userToken) => {
+//   // console.log({ product });
+//   // console.log({ userToken });
+
+//   try {
+//     const response = await axios.post(
+//       "/api/user/cart",
+//       {
+//         product,
+//       },
+//       {
+//         headers: { authorization: userToken },
+//       }
+//     );
+
+//     console.log(response);
+//     // if (response.status === 201) {
+//     //   setCart(response.data.cart);
+//     // }
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
+
+// const handleAddToCart = async (book) => {
+//   // console.log({ encodedToken });
+//   // console.log({ book });
+//   // console.log();
+
+//   try {
+//     const res = await axios.post(
+//       "/api/user/cart",
+//       {
+//         book,
+//       },
+//       {
+//         headers: { authorization: userToken },
+//       }
+//     );
+//     // console.log(res);
+//     if (res.status === 201) {
+//       console.log(res.data.cart);
+//       setCartProducts(res.data.cart);
+//     }
+//   } catch (error) {
+//     console.error("error are : ", error);
+//   }
+// };

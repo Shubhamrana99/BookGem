@@ -2,9 +2,11 @@ import { useContext } from "react";
 import "./cart.css";
 import { CartContext } from "../../context/cart-Context";
 import { useNavigate } from "react-router-dom";
+import { WishListContext } from "../../context/wishList-context";
 
 export const Cart = () => {
-  const { cartProducts } = useContext(CartContext);
+  const { cartProducts, handleRemoveFromCart } = useContext(CartContext);
+  const { isBookInWishList, handleAddToWishList } = useContext(WishListContext);
 
   const navigate = useNavigate();
 
@@ -45,11 +47,29 @@ export const Cart = () => {
                       </div>
 
                       <div className="add-remove-btn">
-                        <button className="addtoacart-wishlist">
-                          Add to Wishlist
-                        </button>
+                        {!isBookInWishList(_id) ? (
+                          <button
+                            className="addtoacart-wishlist"
+                            onClick={() => {
+                              handleAddToWishList(products);
+                              handleRemoveFromCart(_id);
+                            }}
+                          >
+                            Add to Wishlist
+                          </button>
+                        ) : (
+                          <button
+                            className="addtoacart-wishlist"
+                            onClick={() => navigate("/wishlist")}
+                          >
+                            Go to WishList
+                          </button>
+                        )}
 
-                        <button className="removefromcart-btn">
+                        <button
+                          className="removefromcart-btn"
+                          onClick={() => handleRemoveFromCart(_id)}
+                        >
                           <i class="bx bx-trash"></i>
                         </button>
                       </div>
