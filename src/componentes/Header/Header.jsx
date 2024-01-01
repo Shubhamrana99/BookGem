@@ -3,6 +3,7 @@ import "./header.css";
 import { useContext } from "react";
 import { ProductContext } from "../../context/productContext";
 import { CartContext } from "../../context/cart-Context";
+import { WishListContext } from "../../context/wishList-context";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ export const Header = () => {
     productDispatch,
   } = useContext(ProductContext);
   const { cartProducts } = useContext(CartContext);
+  const { wishList } = useContext(WishListContext);
 
   const handleInputSearch = (e) => {
     productDispatch({ type: "SET_SEARCH_INPUT", payload: e.target.value });
@@ -42,7 +44,11 @@ export const Header = () => {
         </div>
 
         <div className="icon">
-          <i class="bx bxs-heart" onClick={() => navigate("/wishlist")}></i>
+          <i class="bx bxs-heart" onClick={() => navigate("/wishlist")}>
+            <sup className="wishlist-length">
+              {wishList.length ? wishList.length : null}
+            </sup>
+          </i>
         </div>
 
         <div className="icon">

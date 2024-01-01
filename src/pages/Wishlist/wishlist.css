@@ -77,6 +77,13 @@
   color: var(--primary-color);
   border: solid 1px var(--primary-color);
 }
+.product-in-cart {
+  background-color: #fff;
+  color: var(--primary-color);
+  border: solid 1px var(--primary-color);
+  padding: 10px;
+  margin-right: 10px;
+}
 
 .empty-wishlist {
   text-align: center;

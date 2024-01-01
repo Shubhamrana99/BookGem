@@ -2,9 +2,11 @@ import { useContext } from "react";
 import "./wishlist.css";
 import { WishListContext } from "../../context/wishList-context";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../context/cart-Context";
 
 export const WishList = () => {
   const { wishList } = useContext(WishListContext);
+  const { handleAddToCart, bookInCart } = useContext(CartContext);
   const navigate = useNavigate();
 
   return (
@@ -17,7 +19,8 @@ export const WishList = () => {
         <div className="wishList-container">
           {wishList.length ? (
             <div className="wishList-listing-container">
-              {wishList.map(({ _id, img, author, name, price, qty }) => {
+              {wishList.map((book) => {
+                const { _id, img, author, name, price } = book;
                 return (
                   <div className="wishList-card" key={_id}>
                     <img
@@ -32,7 +35,18 @@ export const WishList = () => {
                       <p className="book-price">₹{price}</p>
 
                       <div className="add-remove-btn">
-                        <button className="add-to-cart">Add to Cart</button>
+                        {bookInCart(_id) ? (
+                          <button
+                            className="add-to-cart "
+                            onClick={() => navigate("/cart")}
+                          >
+                            Go to Cart
+                          </button>
+                        ) : (
+                          <button className="product-in-cart">
+                            Book in Cart
+                          </button>
+                        )}
 
                         <button className="remove-from-wishlist">
                           <i class="bx bx-trash"></i>

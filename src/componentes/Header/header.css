@@ -40,7 +40,8 @@
   /* font-weight: 700; */
 }
 
-.nav-menu .cart-length {
+.nav-menu .cart-length,
+.nav-menu .wishlist-length {
   font-size: large;
   border-radius: 50%;
 }
