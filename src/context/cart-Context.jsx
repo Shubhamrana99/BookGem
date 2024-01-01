@@ -63,9 +63,39 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const handleQty = async (ID, updateType) => {
+    try {
+      const res = await axios.post(
+        `/api/user/cart/${ID}`,
+        { action: { type: updateType } },
+        {
+          headers: { authorization: userToken },
+        }
+      );
+      setCartProducts(res.data.cart);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const bookInCart = (productID) => {
     return cartProducts.find(({ _id }) => _id === productID);
   };
+
+  const productPrice = cartProducts.reduce(
+    (acc, { originalPrice, qty }) => acc + originalPrice * qty,
+    0
+  );
+
+  const totalDiscount = cartProducts.reduce(
+    (acc, { originalPrice, price, qty }) => acc + (originalPrice - price) * qty,
+    0
+  );
+
+  const totalProductAmount = cartProducts.reduce(
+    (acc, { price, qty }) => acc + price * qty,
+    0
+  );
 
   return (
     <CartContext.Provider
@@ -74,6 +104,10 @@ export const CartProvider = ({ children }) => {
         handleAddToCart,
         cartProducts,
         handleRemoveFromCart,
+        handleQty,
+        productPrice,
+        totalDiscount,
+        totalProductAmount,
       }}
     >
       {children}

@@ -5,10 +5,25 @@ import { useNavigate } from "react-router-dom";
 import { WishListContext } from "../../context/wishList-context";
 
 export const Cart = () => {
-  const { cartProducts, handleRemoveFromCart } = useContext(CartContext);
+  const {
+    cartProducts,
+    handleRemoveFromCart,
+    handleQty,
+    productPrice,
+    totalDiscount,
+    totalProductAmount,
+  } = useContext(CartContext);
   const { isBookInWishList, handleAddToWishList } = useContext(WishListContext);
 
   const navigate = useNavigate();
+
+  const handleUpdateQty = (ID, updateType, qty) => {
+    if (qty >= 1) {
+      handleQty(ID, updateType);
+    } else {
+      handleRemoveFromCart(ID);
+    }
+  };
 
   return (
     <div className="cart-page-container">
@@ -41,9 +56,19 @@ export const Cart = () => {
                       <p className="product-price">₹{price}</p>
 
                       <div className="qty-btn-container">
-                        <button className="qty-btn">+</button>
+                        <button
+                          className="qty-btn"
+                          onClick={() => handleUpdateQty(_id, "increment", qty)}
+                        >
+                          +
+                        </button>
                         <span className="qty">{qty}</span>
-                        <button className="qty-btn">-</button>
+                        <button
+                          className="qty-btn"
+                          onClick={() => handleUpdateQty(_id, "decrement", qty)}
+                        >
+                          -
+                        </button>
                       </div>
 
                       <div className="add-remove-btn">
@@ -88,11 +113,11 @@ export const Cart = () => {
             <h3 className="price-details-header">Price Details</h3>
             <div className="price-content-container">
               <p>Price ({cartProducts.length} items)</p>
-              <p>₹{cartProducts.price}</p>
+              <p>₹{productPrice}</p>
             </div>
             <div className="price-content-container">
               <p>Discount</p>
-              <p>-₹totalDiscount</p>
+              <p>- ₹{totalDiscount}</p>
             </div>
             <div className="price-content-container">
               <p>Delivery Charges</p>
@@ -100,10 +125,10 @@ export const Cart = () => {
             </div>
             <div className="price-content-container total-amount-container">
               <p>Total Amount</p>
-              <p>₹totalAmount</p>
+              <p>₹{totalProductAmount}</p>
             </div>
             <p className="total-amount-text">
-              You will save ₹ totalDiscount on this order
+              You will save <strong>₹{totalDiscount} </strong>on this order
             </p>
             <button
               className="checkout-button"

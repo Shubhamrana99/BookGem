@@ -130,7 +130,9 @@
 
 .price-details-header {
   font-size: 20px;
+  align-items: center;
   margin-bottom: 10px;
+  border-bottom: 1px solid black;
 }
 
 .price-content-container {
@@ -141,6 +143,7 @@
 
 .total-amount-container {
   font-weight: bold;
+  border-block: 1px solid black;
 }
 
 .total-amount-text {
