@@ -1,22 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import "./addressform.css";
 import { AddressContext } from "../../context/addressContext";
 import { useNavigate } from "react-router-dom";
 
 export const AddressForm = () => {
-  const { address, setAddress } = useContext(AddressContext);
+  const { address, setAddress, input, setInput } = useContext(AddressContext);
 
   const navigate = useNavigate();
-
-  const [input, setInput] = useState({
-    id: "",
-    name: "",
-    area: "",
-    city: "",
-    state: "",
-    pincode: "",
-    phoneNumber: "",
-  });
 
   const handleAddressInput = (e) => {
     const { name, value } = e.target;

@@ -23,41 +23,46 @@ export const User = () => {
         {!authState.isLoggedIn ? (
           <SignIn />
         ) : (
-          <div className="userDetails-container">
-            <h3 className="profile-headings">Profile Details</h3>
-            <div className="profile-details">
-              <p>
-                Name : {user.firstName} {user.lastName}
-              </p>
-              <p>Email : {user.email}</p>
+          <div className="user-details-container-box">
+            <div className="userDetails-container">
+              <h3 className="profile-headings">Profile Details</h3>
+              <div className="profile-details">
+                <p>
+                  Name : {user.firstName} {user.lastName}
+                </p>
+                <p>Email : {user.email}</p>
+              </div>
+
+              <div className="address-details">
+                {address.length >= 1 && <h3>My Address:</h3>}
+
+                {address?.map(
+                  ({ id, name, area, city, state, pincode, phoneNumber }) => {
+                    return (
+                      <li key={id} className="address-list">
+                        <p>{name}</p>
+                        <p>{area}</p>
+                        <p>{city}</p>
+                        <p>{state}</p>
+                        <p>{pincode}</p>
+                        <p>{phoneNumber}</p>
+                      </li>
+                    );
+                  }
+                )}
+              </div>
+
+              <button className="signoutbtn" onClick={handleSignOut}>
+                Sign Out
+              </button>
+
+              <button
+                onClick={() => navigate("/address")}
+                className="addressbtn"
+              >
+                Add Address
+              </button>
             </div>
-
-            <div className="address-details">
-              {address.length >= 1 && <h3>My Address:</h3>}
-
-              {address?.map(
-                ({ id, name, area, city, state, pincode, phoneNumber }) => {
-                  return (
-                    <li key={id} className="address-list">
-                      <p>{name}</p>
-                      <p>{area}</p>
-                      <p>{city}</p>
-                      <p>{state}</p>
-                      <p>{pincode}</p>
-                      <p>{phoneNumber}</p>
-                    </li>
-                  );
-                }
-              )}
-            </div>
-
-            <button className="signoutbtn" onClick={handleSignOut}>
-              Sign Out
-            </button>
-
-            <button onClick={() => navigate("/address")} className="addressbtn">
-              Add Address
-            </button>
           </div>
         )}
 

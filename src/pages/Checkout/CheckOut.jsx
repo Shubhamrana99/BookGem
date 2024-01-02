@@ -1,13 +1,37 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./checkout.css";
 import { CartContext } from "../../context/cart-Context";
 import { AddressContext } from "../../context/addressContext";
+import { useNavigate } from "react-router-dom";
 
 export const CheckOut = () => {
   const { cartProducts, productPrice, totalDiscount, totalProductAmount } =
     useContext(CartContext);
 
-  const { address } = useContext(AddressContext);
+  const { address, setInput, input } = useContext(AddressContext);
+
+  const [isSelectAddress, setIsSelectAddress] = useState(false);
+
+  const handleSelectedAddress = (selectedAddress) => {
+    setInput(selectedAddress);
+    setIsSelectAddress(true);
+  };
+
+  const navigate = useNavigate();
+
+  const handlePlaceOrder = () => {
+    if (isSelectAddress) {
+      console.log("order placed");
+      navigate("/productlistingpage");
+    } else {
+      if (address.length) {
+        console.log("please Select address first then checkOut");
+      } else {
+        console.log("Add Address first");
+        navigate("/address");
+      }
+    }
+  };
 
   return (
     <div className="checkout-page-container">
@@ -22,7 +46,12 @@ export const CheckOut = () => {
               return (
                 <div key={id} className="address-details-content">
                   {" "}
-                  <input type="radio" className="address-input" />
+                  <input
+                    type="radio"
+                    className="address-input"
+                    checked={address === input}
+                    onClick={() => handleSelectedAddress(address)}
+                  />
                   <div>
                     <p>{name}</p>
                     <p>{area}</p>
@@ -57,7 +86,7 @@ export const CheckOut = () => {
 
           <div className="price-amount-container">
             <h3 className="price-details-heading">Price Details</h3>
-            <div className="price-amount-container">
+            <div className="pricename-amount-container">
               <p>Price ({cartProducts.length} items)</p>
               <p>₹{productPrice}</p>
             </div>
@@ -72,7 +101,7 @@ export const CheckOut = () => {
               <p>FREE</p>
             </div>
 
-            <div className="total-amount-container">
+            <div className="total-amount">
               <p>Total Amount</p>
               <p>₹{totalProductAmount}</p>
             </div>
@@ -81,12 +110,26 @@ export const CheckOut = () => {
               You will save <strong>₹{totalDiscount} </strong>on this order
             </p>
 
-            <div className="Delivery-details-container">
-              <h3>Delivery Details</h3>
-              <p>Delivery addressis here</p>
+            <div className="delivery-details-container">
+              {address.length >= 1 && (
+                <h3 className="delivery-details-heading">Delivery Details</h3>
+              )}
+
+              <div>
+                <div className="selected-address">
+                  <p>{input.name}</p>
+                  <p>{input.area}</p>
+                  <p>{input.city}</p>
+                  <p>{input.state}</p>
+                  <p>{input.pincode}</p>
+                  <p>{input.phoneNo}</p>
+                </div>
+              </div>
             </div>
 
-            <button className="place-order-btn">Place Order</button>
+            <button className="place-order-btn" onClick={handlePlaceOrder}>
+              Place Order
+            </button>
           </div>
         </div>
       </div>

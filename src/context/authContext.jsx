@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
     password: "",
     confirmPassword: "",
   });
-
+  
   const [isPassVisible, setIsPassVisible] = useState(false);
   const navigate = useNavigate();
 

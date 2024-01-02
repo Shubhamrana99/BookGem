@@ -13,6 +13,7 @@ import { SignIn } from "./pages/SignIn/SignIn";
 import { User } from "./pages/User/User";
 import { AddressForm } from "./utils/address/AddressForm";
 import { CheckOut } from "./pages/Checkout/CheckOut";
+import { RequireAuth } from "./utils/requireauth/RequireAuth";
 
 function App() {
   return (
@@ -21,8 +22,22 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/productlistingpage" element={<ProductListingPage />} />
-        <Route path="/wishlist" element={<WishList />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/wishlist"
+          element={
+            <RequireAuth>
+              <WishList />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <RequireAuth>
+              <Cart />
+            </RequireAuth>
+          }
+        />
         <Route path="/productdetails/:bookID" element={<ProductDetails />} />
         <Route path="/user" element={<User />} />
         <Route path="/signin" element={<SignIn />} />

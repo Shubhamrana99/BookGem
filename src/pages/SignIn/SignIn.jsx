@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./signin.css";
 import { useContext } from "react";
 
@@ -16,6 +16,9 @@ export const SignIn = () => {
     guestSignIn,
   } = useContext(AuthContext);
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const handleUserDetails = (e) => {
     // [email,password]=e.target;
     // setUserDetails((pre)=>{...pre,[name]: e.target.value})
@@ -30,6 +33,8 @@ export const SignIn = () => {
       console.log("plese fill the input");
     }
     userLogIn(e);
+    // console.log(location);
+    navigate("/productlistingpage");
   };
 
   return (

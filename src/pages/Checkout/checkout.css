@@ -7,16 +7,18 @@
 .checkout-page-container .checkout-heading {
   color: #333;
   text-align: center;
+  margin-bottom: 25px;
 }
 
 .checkout-container {
   display: flex;
   justify-content: space-between;
+  gap: 350px;
 }
 
 .checkout-address-container {
   flex: 1;
-  margin-right: 20px;
+  margin-inline: 30px;
 }
 
 .bold {
@@ -31,6 +33,8 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #333;
 }
 
 .address-details-content .address-input {
@@ -39,20 +43,25 @@
 
 .checkout-order-summery-container {
   flex: 1;
+  margin-right: 30px;
 }
 
 .order-summery-heading {
   color: #333;
+  border-block: solid 1px black;
+  padding-block: 5px;
+  text-align: center;
 }
 
 .book-quantity-container {
   display: flex;
+  justify-content: space-between;
   margin-top: 20px;
 }
 
-.book-listing-container,
+/* .book-listing-container, */
 .qty-listing-container {
-  flex: 1;
+  text-align: end;
 }
 
 .bold-text {
@@ -65,19 +74,26 @@
 
 .price-details-heading {
   color: #333;
+  border-block: solid 1px black;
+  text-align: center;
+  padding-block: 5px;
 }
 
-.price-amount-container {
-  /* display: flex; */
-  /* justify-content: space-between; */
-  margin-bottom: 5px;
+.pricename-amount-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
 }
 
 .discount-amount-container,
 .delivery-charge-container,
-.total-amount-container {
+.total-amount {
   display: flex;
   justify-content: space-between;
+}
+
+.total-amount {
+  font-weight: 700;
 }
 
 .total-amount-text {
@@ -86,8 +102,14 @@
   color: #888;
 }
 
-.Delivery-details-container {
+.delivery-details-container {
   margin-top: 20px;
+}
+.delivery-details-heading {
+  border-block: solid 1px black;
+  text-align: center;
+  padding-block: 5px;
+  color: #333;
 }
 
 .place-order-btn {
@@ -98,6 +120,7 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  margin-top: 20px;
 }
 
 .place-order-btn:hover {

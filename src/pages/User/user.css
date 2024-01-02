@@ -1,8 +1,10 @@
 .user-container {
-  /* width: 100%; */
   margin: 120px 2vw 2vw 2vw;
-  /* background-color: aqua; */
 }
+
+/* .user-details-container-box {
+  margin: 120px 2vw 2vw 2vw;
+} */
 .userDetails-container {
   width: 60vw;
   max-width: 500px;
