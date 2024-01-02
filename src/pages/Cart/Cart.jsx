@@ -110,7 +110,7 @@ export const Cart = () => {
 
         {cartProducts.length ? (
           <div className="cart-bill-container">
-            <h3 className="price-details-header">Price Details</h3>
+            <h3 className="price-details-header">PRICE DETAILS</h3>
             <div className="price-content-container">
               <p>Price ({cartProducts.length} items)</p>
               <p>₹{productPrice}</p>
@@ -132,7 +132,7 @@ export const Cart = () => {
             </p>
             <button
               className="checkout-button"
-              // onClick={() => navigate("/checkout")}
+              onClick={() => navigate("/checkout")}
             >
               Checkout
             </button>

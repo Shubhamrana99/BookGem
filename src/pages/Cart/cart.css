@@ -123,16 +123,18 @@
   background-color: #f8f8f8;
   padding: 20px;
   border: 1px solid #ddd;
-  height: 330px;
+  height: 380px;
   margin-right: 100px;
   margin-top: 20px;
 }
 
 .price-details-header {
-  font-size: 20px;
-  align-items: center;
+  font-size: 25px;
+  /* align-items: center; */
+  text-align: center;
   margin-bottom: 10px;
   border-bottom: 1px solid black;
+  padding-bottom: 5px;
 }
 
 .price-content-container {
@@ -144,6 +146,7 @@
 .total-amount-container {
   font-weight: bold;
   border-block: 1px solid black;
+  padding-block: 8px;
 }
 
 .total-amount-text {

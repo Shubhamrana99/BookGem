@@ -1,0 +1,105 @@
+.checkout-page-container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin-top: 120px;
+}
+
+.checkout-page-container .checkout-heading {
+  color: #333;
+  text-align: center;
+}
+
+.checkout-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-address-container {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.address-list {
+  margin-top: 10px;
+}
+
+.address-details-content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.address-details-content .address-input {
+  margin-right: 10px;
+}
+
+.checkout-order-summery-container {
+  flex: 1;
+}
+
+.order-summery-heading {
+  color: #333;
+}
+
+.book-quantity-container {
+  display: flex;
+  margin-top: 20px;
+}
+
+.book-listing-container,
+.qty-listing-container {
+  flex: 1;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.price-amount-container {
+  margin-top: 20px;
+}
+
+.price-details-heading {
+  color: #333;
+}
+
+.price-amount-container {
+  /* display: flex; */
+  /* justify-content: space-between; */
+  margin-bottom: 5px;
+}
+
+.discount-amount-container,
+.delivery-charge-container,
+.total-amount-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total-amount-text {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #888;
+}
+
+.Delivery-details-container {
+  margin-top: 20px;
+}
+
+.place-order-btn {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.place-order-btn:hover {
+  background-color: #45a049;
+}

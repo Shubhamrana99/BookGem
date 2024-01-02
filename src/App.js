@@ -12,6 +12,7 @@ import { SignUp } from "./pages/SignUp/SignUp";
 import { SignIn } from "./pages/SignIn/SignIn";
 import { User } from "./pages/User/User";
 import { AddressForm } from "./utils/address/AddressForm";
+import { CheckOut } from "./pages/Checkout/CheckOut";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/address" element={<AddressForm />} />
+        <Route path="/checkout" element={<CheckOut />} />
 
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
