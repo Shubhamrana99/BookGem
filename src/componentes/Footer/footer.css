@@ -42,9 +42,19 @@
   margin-bottom: 1.5vw;
   font-size: 2.5vw;
 }
-.footer .footer-quick-links .quik-links {
+
+.footer-quick-links {
+  text-align: center;
+}
+
+.footer .footer-quick-links .quick-links {
   margin-bottom: 1.5vw;
   font-size: 2.5vw;
+}
+
+.quick-link-text {
+  color: #fff;
+  font-weight: 500;
 }
 
 @media (max-width: 500px) {
@@ -78,46 +88,20 @@
   .footer .footer-connectus h3 {
     font-size: 5vw;
   }
-  .footer .footer-quick-links h3 {
-    font-size: 5vw;
-  }
 
-  /* @media (max-width: 500px) {
-        .footer {
-            display: grid;
-            grid-template-rows: auto auto; /* Two rows: auto for content, auto for contacts/links 
-            grid-template-columns: 1fr; /* Single column for both contacts and links 
-        }
-    
-        .footer .footer-about {
-            grid-row: 1; /* Place in the first row 
-            grid-column: 1; /* Span the entire first column 
-            width: 100%; /* Full width 
-        }
-        .footer .footer-about h3{
-            font-size: 6vw;
-            padding-bottom: 2vw;
-            font-weight: 800;
-        }
-        .footer .footer-about p{
-        font-size: 3vw;
-        padding-block: 1vw;
-        font-weight: 600;  
-    } 
-    
-        .footer .footer-connectus, .footer .quik-links {
-            grid-row: 2; /* Place in the second row 
-            grid-column: 1; /* Span the entire first column 
-        }
-    
-        .footer .footer-connectus {
-            
-        }
-    
-        .footer .quik-links {
-            color: #fff;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    } */
+  .footer .footer-connectus .quik-links {
+    font-size: 1rem;
+  }
+  .footer-quick-links {
+    text-align: left;
+  }
+  .footer .footer-quick-links .quick-links {
+    margin-bottom: 1.5vw;
+    font-size: 4vw;
+    line-height: 0.5rem;
+  }
+  .quick-link-text {
+    /* font-size: small; */
+    font-size: 3vw;
+  }
 }
