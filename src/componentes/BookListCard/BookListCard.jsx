@@ -4,12 +4,15 @@ import { ProductContext } from "../../context/productContext";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/cart-Context";
 import { WishListContext } from "../../context/wishList-context";
+import { AuthContext } from "../../context/authContext";
+import { pleaseLoggedInToast } from "../../utils/toast/Toast";
 
 export const BookListCard = ({ book }) => {
   const { getDiscount } = useContext(ProductContext);
   const { bookInCart, handleAddToCart } = useContext(CartContext);
   const { handleAddToWishList, isBookInWishList, handleRemoveFromWishList } =
     useContext(WishListContext);
+  const { authState } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -18,10 +21,15 @@ export const BookListCard = ({ book }) => {
   const discountInPercentage = getDiscount(originalPrice, price);
 
   const handleProductToCart = () => {
-    if (bookInCart(_id)) {
-      navigate("/cart");
+    if (authState.isLoggedIn) {
+      if (bookInCart(_id)) {
+        navigate("/cart");
+      } else {
+        handleAddToCart(book);
+      }
     } else {
-      handleAddToCart(book);
+      pleaseLoggedInToast();
+      navigate("/user");
     }
   };
 

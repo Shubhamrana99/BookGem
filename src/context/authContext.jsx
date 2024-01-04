@@ -2,6 +2,11 @@ import { createContext, useReducer, useState } from "react";
 import axios from "axios";
 import { authReducer, intialAuth } from "../reducer/authReducer";
 import { useNavigate } from "react-router-dom";
+import {
+  handleErrorToast,
+  signInToast,
+  signOutToast,
+} from "../utils/toast/Toast";
 
 export const AuthContext = createContext();
 
@@ -15,7 +20,7 @@ export const AuthProvider = ({ children }) => {
     password: "",
     confirmPassword: "",
   });
-  
+
   const [isPassVisible, setIsPassVisible] = useState(false);
   const navigate = useNavigate();
 
@@ -33,8 +38,10 @@ export const AuthProvider = ({ children }) => {
         authDispatch({ type: "HANDLE_SIGNIN", payload: true });
       }
       localStorage.setItem("encodedToken", JSON.stringify(data.encodedToken));
+      signInToast();
     } catch (error) {
       console.error(error);
+      handleErrorToast();
     }
   };
 
@@ -59,6 +66,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("encodedToken");
     localStorage.removeItem("userSignUpDetails", userSignUpDetails);
     navigate("/");
+    signOutToast();
   };
 
   const userSignUpDetails = async () => {
@@ -79,8 +87,10 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data.createdUser);
       authDispatch({ type: "HANDLE_SIGNIN", payload: true });
       navigate("/productlistingpage");
+      signInToast();
     } catch (error) {
       console.error("Error in userSignUpDetails:", error);
+      handleErrorToast();
     }
   };
 
@@ -120,8 +130,10 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("encodedToken", JSON.stringify(data.encodedToken));
         authDispatch({ type: "HANDLE_SIGNIN", payload: true });
       }
+      signInToast();
     } catch (error) {
       console.error("Error in GuestSignIn", error);
+      handleErrorToast();
     }
   };
 

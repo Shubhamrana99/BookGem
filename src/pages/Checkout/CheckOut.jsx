@@ -3,6 +3,11 @@ import "./checkout.css";
 import { CartContext } from "../../context/cart-Context";
 import { AddressContext } from "../../context/addressContext";
 import { useNavigate } from "react-router-dom";
+import {
+  fillAddressToast,
+  orderplacedToast,
+  selectAddressToast,
+} from "../../utils/toast/Toast";
 
 export const CheckOut = () => {
   const { cartProducts, productPrice, totalDiscount, totalProductAmount } =
@@ -21,13 +26,16 @@ export const CheckOut = () => {
 
   const handlePlaceOrder = () => {
     if (isSelectAddress) {
-      console.log("order placed");
+      console.log("Order Placed! Thanks For Shopping");
       navigate("/productlistingpage");
+      orderplacedToast();
     } else {
       if (address.length) {
-        console.log("please Select address first then checkOut");
+        console.log("please Select Address First Then CheckOut");
+        selectAddressToast();
       } else {
-        console.log("Add Address first");
+        console.log("Add Address First");
+        fillAddressToast();
         navigate("/address");
       }
     }

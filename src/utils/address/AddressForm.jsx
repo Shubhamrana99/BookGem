@@ -2,6 +2,7 @@ import { useContext } from "react";
 import "./addressform.css";
 import { AddressContext } from "../../context/addressContext";
 import { useNavigate } from "react-router-dom";
+import { addressAddToast } from "../toast/Toast";
 
 export const AddressForm = () => {
   const { address, setAddress, input, setInput } = useContext(AddressContext);
@@ -27,6 +28,7 @@ export const AddressForm = () => {
       phoneNumber: "",
     });
     navigate("/user");
+    addressAddToast();
   };
 
   return (

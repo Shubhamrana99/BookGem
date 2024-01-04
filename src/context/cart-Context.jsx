@@ -1,5 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import {
+  addToCartToast,
+  handleErrorToast,
+  removedFromCartToast,
+} from "../utils/toast/Toast";
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
@@ -23,6 +28,7 @@ export const CartProvider = ({ children }) => {
         }
       } catch (error) {
         console.error(error);
+        handleErrorToast();
       }
     };
     userToken && getCart();
@@ -46,9 +52,11 @@ export const CartProvider = ({ children }) => {
 
       if (status === 201) {
         setCartProducts([...cart]);
+        addToCartToast();
       }
     } catch (error) {
       console.error(error);
+      handleErrorToast();
     }
   };
 
@@ -58,8 +66,10 @@ export const CartProvider = ({ children }) => {
         headers: { authorization: userToken },
       });
       setCartProducts(res.data.cart);
+      removedFromCartToast();
     } catch (error) {
       console.error(error);
+      handleErrorToast();
     }
   };
 
@@ -75,6 +85,7 @@ export const CartProvider = ({ children }) => {
       setCartProducts(res.data.cart);
     } catch (error) {
       console.error(error);
+      handleErrorToast();
     }
   };
 

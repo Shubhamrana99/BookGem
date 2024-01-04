@@ -1,5 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import {
+  addToWishListToast,
+  handleErrorToast,
+  removedFromWishListToast,
+} from "../utils/toast/Toast";
 
 export const WishListContext = createContext();
 
@@ -41,9 +46,11 @@ export const WishlistProvider = ({ children }) => {
       if (response.status === 201) {
         console.log(response.data.wishlist);
         setWishList([...response.data.wishlist]);
+        addToWishListToast();
       }
     } catch (error) {
       console.error(error);
+      handleErrorToast();
     }
   };
 
@@ -54,8 +61,10 @@ export const WishlistProvider = ({ children }) => {
       });
       console.log(res.data.wishlist);
       setWishList(res.data.wishlist);
+      removedFromWishListToast();
     } catch (error) {
       console.error(error);
+      handleErrorToast();
     }
   };
 

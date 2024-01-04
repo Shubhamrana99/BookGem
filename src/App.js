@@ -14,6 +14,8 @@ import { User } from "./pages/User/User";
 import { AddressForm } from "./utils/address/AddressForm";
 import { CheckOut } from "./pages/Checkout/CheckOut";
 import { RequireAuth } from "./utils/requireauth/RequireAuth";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -49,6 +51,8 @@ function App() {
       </Routes>
 
       <Footer />
+
+      <ToastContainer />
     </div>
   );
 }
