@@ -91,3 +91,18 @@
   font-weight: 800;
   color: #555;
 }
+
+@media (max-width: 500px) {
+  .wishList-page-container {
+    margin-top: 180px;
+  }
+
+  .wishlist-img {
+    max-width: 100%;
+    max-height: auto;
+  }
+
+  .wishList-card {
+    margin: 10px;
+  }
+}

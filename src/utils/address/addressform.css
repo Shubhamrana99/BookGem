@@ -35,3 +35,18 @@
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
 }
+
+@media screen and (max-width: 500px) {
+  .address-container {
+    max-width: 100%;
+    margin-top: 180px;
+  }
+
+  .input-field {
+    margin-bottom: 8px;
+  }
+
+  .submit-btn {
+    margin-bottom: 8px;
+  }
+}

@@ -67,3 +67,20 @@
   border: 1px solid #ddd;
   border-radius: 4px;
 }
+
+@media (max-width: 500px) {
+  .userDetails-container {
+    width: 90vw;
+    max-width: none;
+    margin-top: 100px;
+  }
+
+  .profile-headings,
+  .profile-details,
+  .signoutbtn,
+  .addressbtn,
+  .address-details,
+  .address-details .address-list {
+    font-size: 1.5rem;
+  }
+}

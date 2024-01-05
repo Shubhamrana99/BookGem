@@ -59,49 +59,38 @@
 
 @media (max-width: 500px) {
   .footer {
-    display: flex;
     flex-direction: column;
-    display: grid;
-    margin: 0;
+    height: auto;
+    padding: 2vw;
   }
+
   .footer .footer-about {
     width: 100%;
   }
+
   .footer .footer-about h3 {
-    font-size: 6vw;
-    padding-bottom: 2vw;
-    font-weight: 800;
+    font-size: 5vw;
+    padding-bottom: 1vw;
   }
 
   .footer .footer-about p {
-    font-size: 3vw;
-    padding-block: 1vw;
-    font-weight: 600;
+    font-size: 2.5vw;
+    padding-block: 0.5vw;
+  }
+
+  .footer .footer-connectus .quik-links {
+    font-size: 20px;
+  }
+
+  .footer .footer-connectus .connect-us,
+  .footer .footer-quick-links .quick-links {
+    font-size: 4vw;
   }
 
   .footer-connectus {
     text-align: start;
   }
-  .footer-connectus .quik-links {
-    flex-direction: row;
-  }
-  .footer .footer-connectus h3 {
-    font-size: 5vw;
-  }
-
-  .footer .footer-connectus .quik-links {
-    font-size: 1rem;
-  }
   .footer-quick-links {
     text-align: left;
-  }
-  .footer .footer-quick-links .quick-links {
-    margin-bottom: 1.5vw;
-    font-size: 4vw;
-    line-height: 0.5rem;
-  }
-  .quick-link-text {
-    /* font-size: small; */
-    font-size: 3vw;
   }
 }

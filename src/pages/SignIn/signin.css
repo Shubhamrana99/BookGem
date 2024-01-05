@@ -75,3 +75,19 @@
   transition: all 0.5s;
   transform: scale(1.013);
 }
+
+@media (max-width: 500px) {
+  .signin-page-container {
+    margin-top: 100px;
+  }
+
+  .singnin-container {
+    width: 80vw;
+    max-width: none;
+  }
+
+  .passwordtoggle {
+    right: 10px;
+    font-size: 13px;
+  }
+}

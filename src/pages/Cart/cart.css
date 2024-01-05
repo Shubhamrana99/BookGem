@@ -169,3 +169,27 @@
 .checkout-button:hover {
   background-color: #218838;
 }
+
+@media screen and (max-width: 500px) {
+  .cart-page-container {
+    margin-top: 180px;
+  }
+
+  .cart-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cart-product-container {
+    margin-right: 0;
+  }
+
+  .cart-bill-container {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .checkout-button {
+    margin-top: 10px;
+  }
+}

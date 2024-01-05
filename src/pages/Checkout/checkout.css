@@ -126,3 +126,29 @@
 .place-order-btn:hover {
   background-color: #45a049;
 }
+
+@media screen and (max-width: 500px) {
+  .checkout-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .checkout-address-container,
+  .checkout-order-summery-container {
+    margin: 0;
+  }
+
+  .checkout-address-container,
+  .checkout-order-summery-container {
+    flex: 1;
+  }
+
+  .checkout-container .address-details-content {
+    flex-direction: column;
+  }
+
+  .checkout-container .address-details-content .address-input {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}

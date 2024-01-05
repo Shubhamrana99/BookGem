@@ -68,3 +68,14 @@
   background: none;
   padding: 4px 8px;
 }
+
+@media (max-width: 500px) {
+  .signup-page-container {
+    margin-top: 180px;
+  }
+
+  .signup-container {
+    width: 80vw;
+    max-width: none;
+  }
+}

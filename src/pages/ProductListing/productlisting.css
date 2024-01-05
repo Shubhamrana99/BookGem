@@ -97,3 +97,22 @@
   justify-content: center;
   gap: 2rem;
 }
+
+@media (max-width: 500px) {
+  .productListing-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .productListing-container .filters-container {
+    width: 100%;
+  }
+
+  .productListing-container .books-container h1 {
+    margin: 0 0 1rem 1rem;
+  }
+
+  .productListing-container .books-container .bookListCard-container {
+    gap: 1rem;
+  }
+}
