@@ -62,3 +62,10 @@ export const pleaseLoggedInToast = () => {
 export const pleaseFillInput = () => {
   toast.warning("Please Fill the Details", toastStyling);
 };
+
+export const passwordMisMatchToast = () => {
+  toast.warning(
+    "Both password are mismatched, please fill correctly",
+    toastStyling
+  );
+};

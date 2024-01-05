@@ -4,6 +4,11 @@ import "./signup.css";
 import { AuthContext } from "../../context/authContext";
 import { User } from "../User/User";
 import { Link } from "react-router-dom";
+import {
+  handleErrorToast,
+  passwordMisMatchToast,
+  pleaseFillInput,
+} from "../../utils/toast/Toast";
 
 export const SignUp = () => {
   const {
@@ -24,11 +29,13 @@ export const SignUp = () => {
       signUpDetails.password.trim() === "" ||
       signUpDetails.confirmPassword.trim() === ""
     ) {
-      console.log(`please filled all details`);
+      pleaseFillInput();
     } else if (signUpDetails.password !== signUpDetails.confirmPassword) {
       console.error(`Both password are mismatched, please fill correctly`);
+      passwordMisMatchToast();
     } else {
       userSignUpDetails(e);
+      handleErrorToast();
     }
   };
 
