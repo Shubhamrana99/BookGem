@@ -1,9 +1,10 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./signin.css";
 import { useContext } from "react";
 
 import { AuthContext } from "../../context/authContext";
 import { User } from "../User/User";
+import { pleaseFillInput } from "../../utils/toast/Toast";
 
 export const SignIn = () => {
   const {
@@ -16,7 +17,6 @@ export const SignIn = () => {
     guestSignIn,
   } = useContext(AuthContext);
 
-  const location = useLocation();
   const navigate = useNavigate();
 
   const handleUserDetails = (e) => {
@@ -30,11 +30,11 @@ export const SignIn = () => {
   const handleLoggedInClick = (e) => {
     e.preventDefault();
     if (userDetails.email === "" || userDetails.password === "") {
-      console.log("plese fill the input");
+      pleaseFillInput();
+    } else {
+      userLogIn(e);
+      navigate("/productlistingpage");
     }
-    userLogIn(e);
-    // console.log(location);
-    navigate("/productlistingpage");
   };
 
   return (

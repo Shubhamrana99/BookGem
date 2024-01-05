@@ -28,8 +28,8 @@ export const BookListCard = ({ book }) => {
         handleAddToCart(book);
       }
     } else {
-      pleaseLoggedInToast();
       navigate("/user");
+      pleaseLoggedInToast();
     }
   };
 

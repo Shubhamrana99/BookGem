@@ -38,6 +38,7 @@ export const ProductDetails = () => {
 
           <p className="rating">
             {rating} <i class="bx bxs-star"></i>
+            
           </p>
 
           <div className="prices-container">

@@ -130,6 +130,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("encodedToken", JSON.stringify(data.encodedToken));
         authDispatch({ type: "HANDLE_SIGNIN", payload: true });
       }
+      navigate("/productlistingpage");
       signInToast();
     } catch (error) {
       console.error("Error in GuestSignIn", error);

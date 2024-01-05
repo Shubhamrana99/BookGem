@@ -58,3 +58,7 @@ export const selectAddressToast = () => {
 export const pleaseLoggedInToast = () => {
   toast.error("Please Logged in First", toastStyling);
 };
+
+export const pleaseFillInput = () => {
+  toast.warning("plese fill the input", toastStyling);
+};
