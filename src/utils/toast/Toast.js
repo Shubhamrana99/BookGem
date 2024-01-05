@@ -8,7 +8,7 @@ const toastStyling = {
   pauseOnHover: true,
   draggable: true,
   progress: undefined,
-  theme: "light",
+  theme: "colored",
 };
 
 export const signInToast = () => {
@@ -60,5 +60,5 @@ export const pleaseLoggedInToast = () => {
 };
 
 export const pleaseFillInput = () => {
-  toast.warning("plese fill the input", toastStyling);
+  toast.warning("Please Fill the Details", toastStyling);
 };
