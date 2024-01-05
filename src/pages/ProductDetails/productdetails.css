@@ -112,3 +112,22 @@
   color: var(--primary-color);
   border: solid 1px var(--primary-color);
 }
+
+@media only screen and (max-width: 500px) {
+  .product-page-container {
+    margin-top: 190px;
+  }
+
+  .book-details-container {
+    flex-direction: column; 
+  }
+
+  .book-details-container .book-img {
+    margin-right: 0; 
+  }
+
+  .prices-container {
+    flex-direction: row; 
+    margin-top: 10px; 
+  }
+}
