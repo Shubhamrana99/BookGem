@@ -33,14 +33,6 @@ export const BookListCard = ({ book }) => {
     }
   };
 
-  // const handleAddProductToWishList = () => {
-  //   if (bookInWishList(_id)) {
-  //     navigate("/wishlist");
-  //   } else {
-  //     handleAddToWishList(book);
-  //   }
-  // };
-
   return (
     <div className="bookListcard-container">
       <img
@@ -119,3 +111,23 @@ export const BookListCard = ({ book }) => {
 //   </div>
 // )}
 // </div>
+
+// <div className="addToWishlist-container">
+//           <button className="wishlist-btn" onClick={handleAddToWishListDetails}>
+//             {isBookInWishList(_id) ? (
+//               <div
+//                 className="fill-heart-red"
+//                 onClick={() => handleRemoveFromWishList(_id)}
+//               >
+//                 <i class="bx bxs-heart"></i>
+//               </div>
+//             ) : (
+//               <div
+//                 className="fill-heart"
+//                 onClick={() => handleAddToWishList(book)}
+//               >
+//                 <i class="bx bxs-heart"></i>
+//               </div>
+//             )}
+//           </button>
+//         </div>

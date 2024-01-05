@@ -1,19 +1,28 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./productdetails.css";
 import { useContext } from "react";
 import { ProductContext } from "../../context/productContext";
+import { CartContext } from "../../context/cart-Context";
+import { pleaseLoggedInToast } from "../../utils/toast/Toast";
+import { AuthContext } from "../../context/authContext";
+import { WishListContext } from "../../context/wishList-context";
 
 export const ProductDetails = () => {
   const { bookID } = useParams();
+  const navigate = useNavigate();
+
+  const { authState } = useContext(AuthContext);
 
   const {
     productState: { bookList },
     getDiscount,
   } = useContext(ProductContext);
+  const { bookInCart, handleAddToCart } = useContext(CartContext);
 
   const getBook = bookList?.find(({ _id }) => _id === bookID);
   // console.log(getBook);
   const {
+    _id,
     img,
     name,
     author,
@@ -24,7 +33,35 @@ export const ProductDetails = () => {
     rating,
   } = getBook;
 
+  const { handleAddToWishList, isBookInWishList } = useContext(WishListContext);
+
   const discountedPrice = getDiscount(originalPrice, price);
+
+  const handleAddToCartDetails = () => {
+    if (authState?.isLoggedIn) {
+      if (bookInCart(_id)) {
+        navigate("/cart");
+      } else {
+        handleAddToCart(getBook);
+      }
+    } else {
+      navigate("/user");
+      pleaseLoggedInToast();
+    }
+  };
+
+  const handleAddToWishListDetails = () => {
+    if (authState?.isLoggedIn) {
+      if (isBookInWishList(_id)) {
+        navigate("/wishlist");
+      } else {
+        handleAddToWishList(getBook);
+      }
+    } else {
+      navigate("/user");
+      pleaseLoggedInToast();
+    }
+  };
 
   return (
     <div className="product-page-container">
@@ -38,7 +75,6 @@ export const ProductDetails = () => {
 
           <p className="rating">
             {rating} <i class="bx bxs-star"></i>
-            
           </p>
 
           <div className="prices-container">
@@ -71,8 +107,21 @@ export const ProductDetails = () => {
           </div>
 
           <div className="buttons-container">
-            <button className="cart-btn"> "Add to Cart"</button>
-            <button className="wishlist-btn">"Add to Wishlist"</button>
+            <button className="cart-btn" onClick={handleAddToCartDetails}>
+              {" "}
+              {bookInCart(getBook._id) ? (
+                <div>Go to Cart</div>
+              ) : (
+                <div>Add to Cart</div>
+              )}
+            </button>
+
+            <button
+              className="wishlist-btn"
+              onClick={handleAddToWishListDetails}
+            >
+              {isBookInWishList(_id) ? "Go to WishList" : "Add to Wishlist"}
+            </button>
           </div>
         </div>
       </div>

@@ -44,7 +44,7 @@ export const addressAddToast = () => {
 };
 
 export const orderplacedToast = () => {
-  toast.success("Order Placed! Thanks For Shopping", toastStyling);
+  toast.success("Order Placed! Thanks For Shopping 🙏🙏", toastStyling);
 };
 
 export const fillAddressToast = () => {
