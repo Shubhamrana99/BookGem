@@ -90,7 +90,7 @@ export const AuthProvider = ({ children }) => {
       signInToast();
     } catch (error) {
       console.error("Error in userSignUpDetails:", error);
-      handleErrorToast();
+      // handleErrorToast();
     }
   };
 
